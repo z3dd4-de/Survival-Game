@@ -10,3 +10,5 @@ res://scene/game_over_panel.tscn
 res://scene/main_menu.tscn
 res://scene/world_2.tscn
 res://scene/world.tscn
+res://scene/day_and_night.tscn
+res://scene/player.tscn
