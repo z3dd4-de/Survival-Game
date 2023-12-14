@@ -6,6 +6,7 @@ var hits
 var day
 var start_time
 var end_time
+var player_hit = false
 
 signal ShootingChanged
 signal DayChanged

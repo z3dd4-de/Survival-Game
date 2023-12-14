@@ -884,6 +884,8 @@ offset_bottom = 451.0
 player = NodePath("../../Player")
 
 [node name="day_and_night" parent="." instance=ExtResource("13_pnjbg")]
+z_index = 1
+y_sort_enabled = true
 position = Vector2(-1227, -517)
 
 [node name="camp_fire" parent="." node_paths=PackedStringArray("player") instance=ExtResource("16_choyu")]

@@ -108,7 +108,7 @@ func handleInput():
 		bow_cooldown = false
 		var arrow_instance = arrow.instantiate()
 		arrow_instance.rotation = $Marker2D.rotation
-		arrow_instance.global_position = $Marker2D.global_position
+		arrow_instance.global_position = $Marker2D.global_position + Vector2(randi_range(0,15-PlayerStats.shooting),randi_range(0,15-PlayerStats.shooting))
 		add_child(arrow_instance)
 		await get_tree().create_timer(0.4).timeout
 		bow_cooldown = true
@@ -132,14 +132,18 @@ func hurtByEnemy(area):
 	current_health -= 10
 	checkHealth()
 	is_hurt = true
+	PlayerStats.player_hit = true
 	healthChanged.emit()
 	showHit()
-	hurtTimer.start(1)
+	hurtTimer.start(1.0)
 	await hurtTimer.timeout
 	is_hurt = false
+	PlayerStats.player_hit = false
 
 
 func checkHealth():
+	if current_health < 30:
+		PlayerStats.player_hit = true
 	if current_health <= 0:
 		current_health = 0
 		is_alive = false

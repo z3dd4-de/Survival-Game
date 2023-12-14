@@ -1,9 +1,14 @@
-[gd_scene load_steps=75 format=3 uid="uid://d0mn0prgj1gs5"]
+[gd_scene load_steps=78 format=3 uid="uid://d0mn0prgj1gs5"]
 
 [ext_resource type="Texture2D" uid="uid://dj7jmxu1ubvg6" path="res://art/character/survivalgame-player-green.png" id="1_8tmwr"]
 [ext_resource type="Script" path="res://script/player.gd" id="1_nrwr5"]
 [ext_resource type="Resource" uid="uid://cqix28w6w6178" path="res://inventory/player_inventory.tres" id="2_pdg2a"]
+[ext_resource type="Shader" path="res://shaders/player.gdshader" id="3_1qjku"]
 [ext_resource type="PackedScene" uid="uid://vhfgbpafkxse" path="res://inventory/inventory_ui.tscn" id="4_d4xiu"]
+[ext_resource type="Script" path="res://shaders/PlayerShader.gd" id="5_lgqy1"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_6cy6m"]
+shader = ExtResource("3_1qjku")
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_im3s2"]
 atlas = ExtResource("1_8tmwr")
@@ -583,8 +588,10 @@ inv = ExtResource("2_pdg2a")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 y_sort_enabled = true
+material = SubResource("ShaderMaterial_6cy6m")
 sprite_frames = SubResource("SpriteFrames_yegt0")
-animation = &"hit"
+animation = &"idle"
+script = ExtResource("5_lgqy1")
 
 [node name="CollisonShape2D" type="CollisionShape2D" parent="."]
 z_index = 11
