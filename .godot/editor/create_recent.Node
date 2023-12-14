@@ -1,8 +1,10 @@
 CollisionPolygon2D
+Node2D
+Sprite2D
+TileMap
 Area2D
 StaticBody2D
 Node
-Node2D
 Button
 TextureRect
 GridContainer
@@ -10,5 +12,3 @@ RichTextLabel
 Panel
 Label
 Timer
-LightOccluder2D
-Polygon2D

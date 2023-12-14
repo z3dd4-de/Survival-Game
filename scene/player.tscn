@@ -582,6 +582,7 @@ script = ExtResource("1_nrwr5")
 inv = ExtResource("2_pdg2a")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+y_sort_enabled = true
 sprite_frames = SubResource("SpriteFrames_yegt0")
 animation = &"hit"
 

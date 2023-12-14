@@ -170,6 +170,7 @@ script = ExtResource("1_1ciuu")
 itemRes = ExtResource("2_qwb5u")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+y_sort_enabled = true
 sprite_frames = SubResource("SpriteFrames_dbxaf")
 animation = &"idle"
 frame_progress = 0.0562571
