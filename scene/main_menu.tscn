@@ -1,8 +1,9 @@
-[gd_scene load_steps=4 format=3 uid="uid://c4jabv080y23m"]
+[gd_scene load_steps=5 format=3 uid="uid://c4jabv080y23m"]
 
 [ext_resource type="Texture2D" uid="uid://dt7f3giupd0xu" path="res://art/main_menu_screen_large.png" id="1_8ehsx"]
 [ext_resource type="Script" path="res://script/main_menu.gd" id="2_kt8ck"]
 [ext_resource type="Theme" uid="uid://c7rtcvk0mrocv" path="res://scene/world.tres" id="3_8yfrg"]
+[ext_resource type="AudioStream" uid="uid://c5uqlcbfc1oi2" path="res://sounds/sonatina_letsadventure_1ATaleForTheJourney.ogg" id="4_f4oj2"]
 
 [node name="MainMenu" type="TextureRect"]
 offset_right = 712.0
@@ -29,6 +30,10 @@ offset_bottom = 547.0
 theme = ExtResource("3_8yfrg")
 theme_override_font_sizes/font_size = 40
 text = "Exit Game"
+
+[node name="MenuMusic" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("4_f4oj2")
+autoplay = true
 
 [connection signal="pressed" from="NewGameButton" to="." method="_on_new_game_button_pressed"]
 [connection signal="pressed" from="ExitButton" to="." method="_on_exit_button_pressed"]

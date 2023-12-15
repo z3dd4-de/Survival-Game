@@ -28,7 +28,12 @@ var mouse_loc_from_player = null
 @onready var hurtBox = $hurtBox
 @onready var hurtTimer = $hurtBox/hurtTimer
 @onready var inventory = preload("res://inventory/inventory_ui.tscn")
+@onready var arrow_audio = $ArrowAudio
+@onready var player_dying = $PlayerDying
+@onready var pick_item = $PickItem
 var inv_instance:InventoryUi
+
+@onready var camera = $Camera2D
 
 func _physics_process(_delta):
 	if is_alive:
@@ -105,6 +110,7 @@ func handleInput():
 	$Marker2D.look_at(mouse_pos)
 	
 	if Input.is_action_just_pressed("left_mouse") and bow_equiped and bow_cooldown:
+		arrow_audio.play()
 		bow_cooldown = false
 		var arrow_instance = arrow.instantiate()
 		arrow_instance.rotation = $Marker2D.rotation
@@ -145,6 +151,7 @@ func checkHealth():
 	if current_health < 30:
 		PlayerStats.player_hit = true
 	if current_health <= 0:
+		player_dying.play()
 		current_health = 0
 		is_alive = false
 		$AnimatedSprite2D.play("death")
@@ -160,6 +167,7 @@ func showHit():
 
 func collect(item):
 	inv.insert(item)
+	pick_item.play()
 
 
 func hungry():

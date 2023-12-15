@@ -1,5 +1,10 @@
 extends TextureRect
 
+@onready var menu_music = $MenuMusic
+
+
+
+
 
 
 func _on_new_game_button_pressed():

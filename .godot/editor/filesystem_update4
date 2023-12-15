@@ -15,3 +15,7 @@ res://scene/main_menu.tscn
 res://scene/world.tscn
 res://scene/player.tscn
 res://shaders/test_shader.tscn
+res://script/world_2.gd
+res://script/player.gd
+res://script/main_menu.gd
+res://script/slime.gd

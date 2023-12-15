@@ -11,6 +11,9 @@ var player = null
 @onready var slime = $slime_collectable
 @export var itemRes = InvItem
 @onready var healthBar = $healthBar
+@onready var hit_sound = $HitSound
+@onready var dead_sound = $DeadSound
+@onready var inv_pick = $InventoryPick
 
 func _ready():
 	healthBar.value = current_health
@@ -50,6 +53,7 @@ func _on_hitbox_area_entered(area):
 
 
 func take_damage(damage: int):
+	hit_sound.play()
 	PlayerStats.shooting_level()
 	current_health -= damage
 	healthBar.value = current_health
@@ -58,6 +62,7 @@ func take_damage(damage: int):
 
 
 func death():
+	dead_sound.play()
 	PlayerStats.shooting_level(5) #Bonus for kill
 	is_dead = true
 	var temp_player = player
@@ -81,6 +86,7 @@ func drop_slime():
 func playercollect():
 	if Input.is_action_just_pressed("harvest") and player != null and $slime_collectable/collect_area.visible:
 		player.collect(itemRes)
+		#inv_pick.play()
 		await get_tree().create_timer(0.3).timeout
 		self.queue_free()
 

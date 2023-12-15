@@ -86,6 +86,8 @@ size = Vector2(17, 20)
 size = Vector2(30, 13)
 
 [node name="camp_fire" type="StaticBody2D"]
+z_index = 5
+y_sort_enabled = true
 script = ExtResource("1_trufi")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]

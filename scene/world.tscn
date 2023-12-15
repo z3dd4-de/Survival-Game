@@ -1,4 +1,4 @@
-[gd_scene load_steps=32 format=3 uid="uid://d0ylgb5olq8hw"]
+[gd_scene load_steps=33 format=3 uid="uid://d0ylgb5olq8hw"]
 
 [ext_resource type="PackedScene" uid="uid://d0mn0prgj1gs5" path="res://scene/player.tscn" id="1_cv17m"]
 [ext_resource type="Script" path="res://script/world.gd" id="1_u3rvd"]
@@ -26,6 +26,7 @@
 [ext_resource type="PackedScene" uid="uid://hy6wdxrypvps" path="res://scene/keyboard_layout_panel.tscn" id="19_ssdro"]
 [ext_resource type="PackedScene" uid="uid://1gyxjl47e7if" path="res://scene/game_over_panel.tscn" id="21_8srsg"]
 [ext_resource type="PackedScene" uid="uid://c1qcc6lclah8e" path="res://scene/world_2.tscn" id="26_q5dhs"]
+[ext_resource type="AudioStream" uid="uid://nvqbsu0gbl6n" path="res://sounds/sonatina_letsadventure_2Harbingers.ogg" id="27_5gxfb"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_20s36"]
 texture = ExtResource("3_ekj0q")
@@ -868,19 +869,19 @@ script = ExtResource("19_csa84")
 player = NodePath("../../Player")
 
 [node name="KeyboardLayoutPanel" parent="CanvasLayer" instance=ExtResource("19_ssdro")]
-offset_left = 256.0
-offset_top = 139.0
-offset_right = 871.0
-offset_bottom = 473.0
+offset_left = 716.0
+offset_top = 299.0
+offset_right = 1331.0
+offset_bottom = 633.0
 size_flags_horizontal = 4
 size_flags_vertical = 4
 
 [node name="GameOverPanel" parent="CanvasLayer" node_paths=PackedStringArray("player") instance=ExtResource("21_8srsg")]
 visible = false
-offset_left = 257.0
-offset_top = 166.0
-offset_right = 867.0
-offset_bottom = 451.0
+offset_left = 713.0
+offset_top = 323.0
+offset_right = 1323.0
+offset_bottom = 608.0
 player = NodePath("../../Player")
 
 [node name="day_and_night" parent="." instance=ExtResource("13_pnjbg")]
@@ -902,6 +903,11 @@ item = ExtResource("18_u3prd")
 polygon = PackedVector2Array(-440, 163, -440, 177, -394, 177, -394, 152, -377, 139, -338, 139, -320, 152, -314, 176, -116, 177, -115, 149, -92, 135, -34, 137, -28, 73, -12, 58, 178, 58, 200, 70, 203, 93, 380, 98, 399, 118, 398, 156, 382, 171, 281, 172, 281, 296, 304, 296, 323, 313, 323, 340, 346, 339, 362, 356, 363, 388, 355, 406, 320, 409, 319, 471, 307, 489, 7, 492, -2, 524, -20, 532, -33, 525, -35, 494, -57, 489, -66, 482, -69, 454, -80, 453, -82, 476, -96, 489, -172, 492, -190, 480, -194, 451, -239, 453, -243, 474, -262, 491, -346, 492, -345, 456, -275, 455, -268, 430, -254, 419, -180, 416, -160, 428, -155, 458, -115, 456, -110, 394, -96, 381, -32, 380, -33, 371, -58, 371, -74, 354, -76, 251, -110, 240, -112, 215, -333, 212, -350, 198, -352, 171, -361, 170, -364, 191, -369, 204, -374, 211, -442, 215, -440, 229, -126, 229, -125, 247, -92, 259, -87, 365, -116, 382, -120, 437, -151, 437, -157, 418, -180, 405, -268, 409, -285, 441, -357, 443, -358, 502, -255, 501, -216, 467, -193, 499, -166, 506, -48, 503, -45, 529, -26, 544, -6, 542, 11, 530, 18, 507, 317, 500, 336, 471, 334, 422, 365, 413, 375, 395, 373, 344, 355, 328, 338, 327, 335, 302, 310, 282, 292, 281, 292, 186, 378, 186, 404, 168, 409, 155, 409, 108, 380, 86, 213, 81, 211, 62, 175, 45, -16, 44, -41, 69, -45, 122, -108, 124, -128, 143, -129, 166, -240, 166, -283, 164, -330, 130, -383, 127, -408, 147, -407, 166)
 
 [node name="world2" parent="." instance=ExtResource("26_q5dhs")]
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("27_5gxfb")
+volume_db = -12.0
+autoplay = true
 
 [connection signal="timeout" from="spawner/Timer" to="spawner" method="_on_timer_timeout"]
 [connection signal="body_entered" from="water_collect_area" to="water_collect_area" method="_on_body_entered"]

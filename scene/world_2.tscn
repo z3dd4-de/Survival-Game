@@ -1,12 +1,14 @@
-[gd_scene load_steps=14 format=3 uid="uid://c1qcc6lclah8e"]
+[gd_scene load_steps=22 format=3 uid="uid://c1qcc6lclah8e"]
 
 [ext_resource type="Texture2D" uid="uid://l5vo2jow3a5c" path="res://art/environment/survivalgame-terrian-defult.png" id="1_majrj"]
+[ext_resource type="Script" path="res://script/world_2.gd" id="1_n13ug"]
 [ext_resource type="Texture2D" uid="uid://cfswwxbbdhohi" path="res://art/environment/survivalgame-terrian-cliffs.png" id="2_bxjvc"]
 [ext_resource type="Texture2D" uid="uid://ctwa2xohet2k7" path="res://art/environment/survivalgame-trees.png" id="3_l178t"]
 [ext_resource type="Texture2D" uid="uid://o5avspwfgfh" path="res://art/environment/survivalgame-terrian-water.png" id="4_7287a"]
 [ext_resource type="Script" path="res://script/pick_water_area.gd" id="5_mu16j"]
 [ext_resource type="Texture2D" uid="uid://b6rjdrqmtr8fn" path="res://art/environment/house40x40.png" id="5_wgbix"]
 [ext_resource type="Resource" uid="uid://ebe43cksatol" path="res://inventory/items/water_potion.tres" id="6_btd0h"]
+[ext_resource type="Texture2D" uid="uid://dd465yq10pjaf" path="res://art/environment/SmokeParticle.png" id="7_emlth"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_ec13f"]
 texture = ExtResource("1_majrj")
@@ -790,12 +792,68 @@ sources/2 = SubResource("TileSetAtlasSource_h6dpx")
 sources/3 = SubResource("TileSetAtlasSource_lrrqm")
 sources/4 = SubResource("TileSetAtlasSource_erv4f")
 
+[sub_resource type="Animation" id="Animation_c0vlr"]
+resource_name = "cover_fade"
+length = 2.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("ColorRect:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(0, 0, 0, 0.784314), Color(0, 0, 0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_garji"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("ColorRect:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(0, 0, 0, 0.784314)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_thv4v"]
+_data = {
+"RESET": SubResource("Animation_garji"),
+"cover_fade": SubResource("Animation_c0vlr")
+}
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_pic5a"]
+size = Vector2(591.5, 35)
+
+[sub_resource type="Curve2D" id="Curve2D_ooi3v"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, -81, 1449, 0, 0, 0, 0, -280, 1473, 0, 0, 0, 0, -461, 1510, 0, 0, 0, 0, -619, 1573, 0, 0, 0, 0, -721, 1675, 0, 0, 0, 0, -818, 1774, 0, 0, 0, 0, -852, 1906, 0, 0, 0, 0, -847, 2049, 0, 0, 0, 0, -797, 2190, 0, 0, 0, 0, -686, 2262, 0, 0, 0, 0, -455, 2231, 0, 0, 0, 0, -353, 2117, 0, 0, 0, 0, -350, 1959, 0, 0, 0, 0, -376, 1838)
+}
+point_count = 14
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_k4ewm"]
+particle_flag_rotate_y = true
+spread = 180.0
+initial_velocity_min = 1.0
+initial_velocity_max = 2.0
+gravity = Vector3(0, 0, 0)
+linear_accel_min = 50.0
+linear_accel_max = 100.0
+
 [node name="world2" type="Node2D"]
+script = ExtResource("1_n13ug")
 
 [node name="world2main" type="Node2D" parent="."]
+visible = false
 
 [node name="TileMap" type="TileMap" parent="world2main"]
-visible = false
 y_sort_enabled = true
 tile_set = SubResource("TileSet_e4rm6")
 format = 2
@@ -812,9 +870,10 @@ layer_3/name = "npc_house"
 layer_3/y_sort_enabled = true
 layer_3/tile_data = PackedInt32Array(3014645, 131076, 0, 3080181, 131076, 1, 3014646, 196612, 0, 3080182, 196612, 1, 3014647, 262148, 0, 3080183, 262148, 1, 3014648, 327684, 0, 3080184, 327684, 1, 3145716, 4, 2, 3145721, 393220, 2)
 
-[node name="world2openingcutscene" type="Node" parent="."]
+[node name="world2openingcutscene" type="Node2D" parent="."]
 
 [node name="TileMap_finished" type="TileMap" parent="world2openingcutscene"]
+visible = false
 y_sort_enabled = true
 tile_set = SubResource("TileSet_e4rm6")
 format = 2
@@ -849,8 +908,54 @@ layer_3/y_sort_enabled = true
 layer_3/tile_data = PackedInt32Array()
 
 [node name="ColorRect" type="ColorRect" parent="world2openingcutscene"]
-offset_right = 40.0
-offset_bottom = 40.0
+offset_left = -1156.0
+offset_top = 1415.0
+offset_right = 1329.0
+offset_bottom = 2834.0
+color = Color(0, 0, 0, 0.784314)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="world2openingcutscene"]
+libraries = {
+"": SubResource("AnimationLibrary_thv4v")
+}
+
+[node name="player_detection" type="Area2D" parent="world2openingcutscene"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="world2openingcutscene/player_detection"]
+position = Vector2(-79.75, 1447.5)
+shape = SubResource("RectangleShape2D_pic5a")
+
+[node name="Path2D" type="Path2D" parent="world2openingcutscene"]
+curve = SubResource("Curve2D_ooi3v")
+
+[node name="PathFollow2D" type="PathFollow2D" parent="world2openingcutscene/Path2D"]
+position = Vector2(-81, 1449)
+rotation = 3.02157
+loop = false
+
+[node name="Camera2D" type="Camera2D" parent="world2openingcutscene/Path2D/PathFollow2D"]
+zoom = Vector2(4, 4)
+
+[node name="SmokeParticles1" type="GPUParticles2D" parent="world2openingcutscene"]
+position = Vector2(-365, 1922)
+emitting = false
+amount = 800
+process_material = SubResource("ParticleProcessMaterial_k4ewm")
+texture = ExtResource("7_emlth")
+
+[node name="SmokeParticles2" type="GPUParticles2D" parent="world2openingcutscene"]
+position = Vector2(-303, 1921)
+emitting = false
+amount = 800
+process_material = SubResource("ParticleProcessMaterial_k4ewm")
+texture = ExtResource("7_emlth")
+
+[node name="SmokeParticles3" type="GPUParticles2D" parent="world2openingcutscene"]
+position = Vector2(-444, 1919)
+emitting = false
+amount = 800
+process_material = SubResource("ParticleProcessMaterial_k4ewm")
+texture = ExtResource("7_emlth")
 
 [node name="collisions" type="StaticBody2D" parent="."]
 
@@ -861,7 +966,7 @@ polygon = PackedVector2Array(-231, 2325, -229, 2300, -215, 2290, 127, 2290, 150,
 polygon = PackedVector2Array(574, 1754, 643, 1752, 647, 1858, 667, 1875, 855, 1873, 874, 1857, 872, 1706, 855, 1687, 667, 1687, 649, 1696, 645, 1726, 571, 1727)
 
 [node name="outer_border" type="CollisionPolygon2D" parent="collisions"]
-polygon = PackedVector2Array(205, 1454, 208, 1485, 252, 1508, 519, 1510, 529, 1535, 578, 1560, 601, 1546, 609, 1570, 650, 1593, 650, 1613, 683, 1633, 688, 1650, 734, 1672, 1082, 1666, 1088, 1910, 968, 2020, 968, 2173, 1002, 2190, 1009, 2214, 1045, 2232, 1046, 2254, 1084, 2276, 1090, 2292, 1124, 2313, 1124, 2647, -362, 2647, -382, 2630, -416, 2614, -463, 2617, -504, 2632, -525, 2644, -912, 2647, -965, 2607, -966, 2313, -921, 2289, -930, 2129, -975, 2105, -966, 1791, -641, 1793, -488, 1648, -484, 1588, -450, 1571, -444, 1549, -417, 1557, -403, 1547, -408, 1510, -364, 1492, -365, 1437, -1123, 1438, -1123, 2722, 1283, 2723, 1281, 1436, 216, 1438, 206, 1441)
+polygon = PackedVector2Array(205, 1454, 208, 1485, 252, 1508, 519, 1510, 529, 1535, 565, 1552, 601, 1546, 609, 1570, 650, 1593, 650, 1613, 683, 1633, 688, 1650, 734, 1672, 1082, 1666, 1088, 1910, 968, 2020, 968, 2173, 1002, 2190, 1009, 2214, 1045, 2232, 1056, 2256, 1084, 2276, 1090, 2292, 1124, 2313, 1127, 2657, -358, 2660, -382, 2630, -416, 2614, -463, 2617, -504, 2632, -524, 2656, -921, 2659, -965, 2607, -966, 2313, -929, 2290, -930, 2129, -975, 2105, -966, 1791, -641, 1793, -488, 1648, -484, 1588, -450, 1571, -444, 1549, -422, 1555, -403, 1547, -408, 1510, -364, 1492, -365, 1437, -1123, 1438, -1123, 2722, 1283, 2723, 1281, 1436, 216, 1438, 206, 1441)
 
 [node name="forest1" type="CollisionPolygon2D" parent="collisions"]
 polygon = PackedVector2Array(-674, 2041, -624, 2022, -600, 2014, -582, 2019, -561, 2021, -540, 2016, -522, 2021, -522, 2171, -577, 2198, -601, 2188, -622, 2202, -678, 2174)
@@ -893,3 +998,5 @@ polygon = PackedVector2Array(-355, 2344, -353, 2534, -339, 2550, -158, 2553, -15
 
 [node name="CollisionPolygon2D2" type="CollisionPolygon2D" parent="watercollect_area"]
 polygon = PackedVector2Array(570, 1721, 569, 1752, 638, 1755, 644, 1860, 665, 1878, 855, 1876, 878, 1859, 875, 1703, 857, 1684, 665, 1683, 643, 1697, 642, 1723, 576, 1723, 565, 1710, 625, 1708, 626, 1690, 663, 1665, 726, 1673, 867, 1672, 891, 1700, 892, 1870, 866, 1888, 661, 1895, 626, 1866, 626, 1768, 555, 1767, 560, 1709)
+
+[connection signal="body_entered" from="world2openingcutscene/player_detection" to="." method="_on_player_detection_body_entered"]
