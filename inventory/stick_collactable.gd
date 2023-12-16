@@ -3,10 +3,13 @@ class_name Stick extends StaticBody2D
 @export var item: InvItem
 var player = null
 
+@onready var tutorial_message_4_shown = false
 
 func _on_interactable_area_body_entered(body):
 	if body.has_method("player"):
 		player = body
+		if !tutorial_message_4_shown:
+			PlayerStats.send_message("Press \"E\" to collect the stick")
 
 
 func _process(_delta):

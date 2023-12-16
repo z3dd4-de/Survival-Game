@@ -1,4 +1,4 @@
-[gd_scene load_steps=33 format=3 uid="uid://d0ylgb5olq8hw"]
+[gd_scene load_steps=34 format=3 uid="uid://d0ylgb5olq8hw"]
 
 [ext_resource type="PackedScene" uid="uid://d0mn0prgj1gs5" path="res://scene/player.tscn" id="1_cv17m"]
 [ext_resource type="Script" path="res://script/world.gd" id="1_u3rvd"]
@@ -27,6 +27,7 @@
 [ext_resource type="PackedScene" uid="uid://1gyxjl47e7if" path="res://scene/game_over_panel.tscn" id="21_8srsg"]
 [ext_resource type="PackedScene" uid="uid://c1qcc6lclah8e" path="res://scene/world_2.tscn" id="26_q5dhs"]
 [ext_resource type="AudioStream" uid="uid://nvqbsu0gbl6n" path="res://sounds/sonatina_letsadventure_2Harbingers.ogg" id="27_5gxfb"]
+[ext_resource type="PackedScene" uid="uid://bcjq1xw84ydbb" path="res://scene/message_layer.tscn" id="28_3ystj"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_20s36"]
 texture = ExtResource("3_ekj0q")
@@ -885,6 +886,7 @@ offset_bottom = 608.0
 player = NodePath("../../Player")
 
 [node name="day_and_night" parent="." instance=ExtResource("13_pnjbg")]
+visible = false
 z_index = 1
 y_sort_enabled = true
 position = Vector2(-1227, -517)
@@ -908,6 +910,11 @@ polygon = PackedVector2Array(-440, 163, -440, 177, -394, 177, -394, 152, -377, 1
 stream = ExtResource("27_5gxfb")
 volume_db = -12.0
 autoplay = true
+
+[node name="MessageLayer" parent="." instance=ExtResource("28_3ystj")]
+visible = false
+offset = Vector2(250, 10)
+transform = Transform2D(1, 0, 0, 1, 250, 10)
 
 [connection signal="timeout" from="spawner/Timer" to="spawner" method="_on_timer_timeout"]
 [connection signal="body_entered" from="water_collect_area" to="water_collect_area" method="_on_body_entered"]

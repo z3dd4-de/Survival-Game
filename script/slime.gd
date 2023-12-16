@@ -41,8 +41,9 @@ func _on_detection_area_body_entered(body):
 
 
 func _on_detection_area_body_exited(body):
-	if body.has_method("player"):
-		player = null
+	#if body.has_method("player"):
+	#	player = null
+	pass
 
 
 func _on_hitbox_area_entered(area):

@@ -3,6 +3,9 @@ extends Area2D
 @export var player: Player
 @export var item: InvItem
 
+@onready var tutorial_message_3_shown = false
+
+
 func _process(delta):
 	pick_water()
 
@@ -15,6 +18,9 @@ func pick_water():
 func _on_body_entered(body):
 	if body.has_method("player"):
 		player = body
+		if !tutorial_message_3_shown:
+			PlayerStats.send_message("You can get some water with \"E\"")
+			tutorial_message_3_shown = true
 
 
 func _on_body_exited(body):

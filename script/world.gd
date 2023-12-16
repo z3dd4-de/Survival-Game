@@ -1,12 +1,15 @@
 extends Node2D
 
-
+@onready var tutorial_message_1_shown = false
 func _ready():
+	#PlayerStats.send_message("Arm yourself with the bow (1)!")
 	pass
 
 
 func _process(_delta):
-	pass
+	if !tutorial_message_1_shown:
+		PlayerStats.send_message("Arm yourself with the bow (1)!")
+		tutorial_message_1_shown = true
 
 
 func _input(event):

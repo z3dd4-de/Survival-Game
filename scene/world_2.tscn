@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=3 uid="uid://c1qcc6lclah8e"]
+[gd_scene load_steps=23 format=3 uid="uid://c1qcc6lclah8e"]
 
 [ext_resource type="Texture2D" uid="uid://l5vo2jow3a5c" path="res://art/environment/survivalgame-terrian-defult.png" id="1_majrj"]
 [ext_resource type="Script" path="res://script/world_2.gd" id="1_n13ug"]
@@ -9,6 +9,7 @@
 [ext_resource type="Texture2D" uid="uid://b6rjdrqmtr8fn" path="res://art/environment/house40x40.png" id="5_wgbix"]
 [ext_resource type="Resource" uid="uid://ebe43cksatol" path="res://inventory/items/water_potion.tres" id="6_btd0h"]
 [ext_resource type="Texture2D" uid="uid://dd465yq10pjaf" path="res://art/environment/SmokeParticle.png" id="7_emlth"]
+[ext_resource type="PackedScene" uid="uid://pkc5es7jq8x2" path="res://scene/npc.tscn" id="10_sq5g1"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_ec13f"]
 texture = ExtResource("1_majrj")
@@ -792,6 +793,21 @@ sources/2 = SubResource("TileSetAtlasSource_h6dpx")
 sources/3 = SubResource("TileSetAtlasSource_lrrqm")
 sources/4 = SubResource("TileSetAtlasSource_erv4f")
 
+[sub_resource type="Animation" id="Animation_garji"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("ColorRect:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(0, 0, 0, 0.784314)]
+}
+
 [sub_resource type="Animation" id="Animation_c0vlr"]
 resource_name = "cover_fade"
 length = 2.0
@@ -806,21 +822,6 @@ tracks/0/keys = {
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
 "values": [Color(0, 0, 0, 0.784314), Color(0, 0, 0, 0)]
-}
-
-[sub_resource type="Animation" id="Animation_garji"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("ColorRect:color")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Color(0, 0, 0, 0.784314)]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_thv4v"]
@@ -981,7 +982,7 @@ polygon = PackedVector2Array(125, 1994, 124, 2165, 176, 2199, 384, 2197, 433, 21
 polygon = PackedVector2Array(78, 1714, 54, 1717, 55, 1830, 67, 1835, 372, 1837, 384, 1829, 386, 1717, 373, 1703, 347, 1703, 347, 1596, 347, 1596, 330, 1585, 68, 1584, 53, 1596, 54, 1685, 79, 1680, 76, 1594, 328, 1594, 328, 1708, 337, 1713, 369, 1716, 371, 1806, 77, 1807)
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="collisions"]
-polygon = PackedVector2Array(-438, 1906, -285, 1904, -283, 1832, -342, 1826, -438, 1833)
+polygon = PackedVector2Array(-439, 1908, -283, 1908, -283, 1832, -342, 1826, -438, 1833)
 
 [node name="CollisionPolygon2D2" type="CollisionPolygon2D" parent="collisions"]
 polygon = PackedVector2Array(-467, 1902, -466, 1910, -466, 1923, -448, 1923, -445, 1910, -447, 1902)
@@ -998,5 +999,8 @@ polygon = PackedVector2Array(-355, 2344, -353, 2534, -339, 2550, -158, 2553, -15
 
 [node name="CollisionPolygon2D2" type="CollisionPolygon2D" parent="watercollect_area"]
 polygon = PackedVector2Array(570, 1721, 569, 1752, 638, 1755, 644, 1860, 665, 1878, 855, 1876, 878, 1859, 875, 1703, 857, 1684, 665, 1683, 643, 1697, 642, 1723, 576, 1723, 565, 1710, 625, 1708, 626, 1690, 663, 1665, 726, 1673, 867, 1672, 891, 1700, 892, 1870, 866, 1888, 661, 1895, 626, 1866, 626, 1768, 555, 1767, 560, 1709)
+
+[node name="npc" parent="." instance=ExtResource("10_sq5g1")]
+position = Vector2(-339, 1944)
 
 [connection signal="body_entered" from="world2openingcutscene/player_detection" to="." method="_on_player_detection_body_entered"]

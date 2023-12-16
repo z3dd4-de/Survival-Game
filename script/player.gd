@@ -35,6 +35,7 @@ var inv_instance:InventoryUi
 
 @onready var camera = $Camera2D
 
+
 func _physics_process(_delta):
 	if is_alive:
 		handleInput()

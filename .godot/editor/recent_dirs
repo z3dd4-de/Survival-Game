@@ -1,9 +1,9 @@
-res://art/environment
-res://sounds
 res://script
-res://shaders
 res://scene
 res://art/character
+res://art/environment
+res://sounds
+res://shaders
 res://art
 res://inventory
 res://inventory/items

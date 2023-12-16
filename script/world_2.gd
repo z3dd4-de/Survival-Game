@@ -2,6 +2,7 @@ extends Node2D
 
 @onready var anim_player = $world2openingcutscene/AnimationPlayer
 @onready var camera = $world2openingcutscene/Path2D/PathFollow2D/Camera2D
+@onready var npc = $npc
 
 var is_opening_cutscene = false
 
@@ -29,6 +30,7 @@ func _physics_process(delta):
 				await get_tree().create_timer(10).timeout
 				$world2openingcutscene/TileMap_finished.visible = true
 				$world2openingcutscene/TileMap_unfinished.visible = false
+				npc.set_start_position(npc.start_position)
 				toggle_smoke()
 				await get_tree().create_timer(0.5).timeout
 				smoke_has_happened = true

@@ -12,6 +12,7 @@ signal ShootingChanged
 signal DayChanged
 signal DrinkWater
 signal EatApple
+signal sendMessage
 
 
 func _ready():
@@ -53,3 +54,7 @@ func shooting_level(hit = 1):
 	
 	if shooting > tmp:
 		ShootingChanged.emit()
+
+
+func send_message(text: String):
+	sendMessage.emit(text)
