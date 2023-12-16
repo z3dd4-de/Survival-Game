@@ -23,6 +23,7 @@ Additionally, I implemented further improvements to my game:
 - NPC house in World 2
 - Music (OGG): LET'S ADVENTURE! by Sara Garrard (sonatina.itch.io)
 - Sounds (MP3): arrow, slime hit, slime died, player puts item in inventory, player died
+- Screen messages (hints, tutorial...)
 
 PLANNED:
 - Larger World
@@ -33,7 +34,6 @@ PLANNED:
 - Settings (screen size, audio volume, music on/off, difficulty)
 - Player level (EXP)
 - Simple crafting system (sticks -> arrows, sticks -> campfire, slime -> health potion...)
-- Screen messages (hints, tutorial...)
 - Save/load game (main menu, inside the game)
 - Better enemy AI: slimes should walk around and be more aggressive
 
