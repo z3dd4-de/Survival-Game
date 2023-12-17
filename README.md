@@ -40,7 +40,6 @@ PLANNED:
 KNOWN BUGS:
 - After slime hit player it loses detection of the player and doesn't follow him
 - Removal of items from the inventory doesn't work, thus player cannot drink or eat and dies at day 4
-- Some wrong tiles on World 1 (some trees, one side of the lake)
 - Switching animation to NPC house (house not shown when animation finishes)
 - When game over screen is shown, system time still counts and player dies again every ... seconds (game loop not stopped correctly)
 - Layout of the game over screen needs to be fixed
