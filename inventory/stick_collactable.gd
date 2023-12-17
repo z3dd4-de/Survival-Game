@@ -10,6 +10,7 @@ func _on_interactable_area_body_entered(body):
 		player = body
 		if !tutorial_message_4_shown:
 			PlayerStats.send_message("Press \"E\" to collect the stick")
+			tutorial_message_4_shown = true
 
 
 func _process(_delta):

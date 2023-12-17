@@ -47,6 +47,7 @@ func _process(delta):
 
 	if Input.is_action_just_pressed("chat"):
 		print("chatting with player")
+		$Dialogue.start()
 		is_roaming = false
 		is_chatting = true
 		$AnimatedSprite2D.play("idle")
@@ -81,3 +82,8 @@ func _on_timer_timeout():
 
 func set_start_position(pos: Vector2):
 	position = pos
+
+
+func _on_dialogue_dialogue_finished():
+	is_chatting = false
+	is_roaming = true

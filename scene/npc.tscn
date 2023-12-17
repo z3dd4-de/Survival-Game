@@ -1,7 +1,8 @@
-[gd_scene load_steps=24 format=3 uid="uid://pkc5es7jq8x2"]
+[gd_scene load_steps=25 format=3 uid="uid://pkc5es7jq8x2"]
 
 [ext_resource type="Texture2D" uid="uid://c7838dsh4x7ij" path="res://art/character/Human-Worker-Red.png" id="1_ckwfj"]
 [ext_resource type="Script" path="res://script/npc.gd" id="1_o3bcq"]
+[ext_resource type="PackedScene" uid="uid://4h3uaee614dl" path="res://dialogue/dialogue.tscn" id="3_0xwdb"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_fwtos"]
 atlas = ExtResource("1_ckwfj")
@@ -183,6 +184,9 @@ shape = SubResource("CircleShape2D_xebve")
 [node name="Timer" type="Timer" parent="."]
 autostart = true
 
+[node name="Dialogue" parent="." instance=ExtResource("3_0xwdb")]
+
 [connection signal="body_entered" from="chat_detection_area" to="." method="_on_chat_detection_area_body_entered"]
 [connection signal="body_exited" from="chat_detection_area" to="." method="_on_chat_detection_area_body_exited"]
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
+[connection signal="dialogue_finished" from="Dialogue" to="." method="_on_dialogue_dialogue_finished"]

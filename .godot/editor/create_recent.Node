@@ -1,3 +1,10 @@
+RichTextLabel
+Button
+AudioStreamPlayer
+ColorRect
+Control
+Node
+NinePatchRect
 Timer
 CollisionShape2D
 Area2D
@@ -5,10 +12,3 @@ AnimatedSprite2D
 CharacterBody2D
 CanvasLayer
 Label
-Panel
-MarginContainer
-GPUParticles2D
-AudioStreamPlayer2D
-Node2D
-Camera2D
-PathFollow2D

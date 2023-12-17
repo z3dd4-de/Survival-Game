@@ -1,0 +1,43 @@
+[gd_scene load_steps=4 format=3 uid="uid://drpuxfgsjb85u"]
+
+[ext_resource type="Theme" uid="uid://c7rtcvk0mrocv" path="res://scene/world.tres" id="1_5644l"]
+[ext_resource type="Script" path="res://script/credits.gd" id="1_rh01r"]
+[ext_resource type="AudioStream" uid="uid://c5uqlcbfc1oi2" path="res://sounds/sonatina_letsadventure_1ATaleForTheJourney.ogg" id="3_ttelf"]
+
+[node name="Credits" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 1921.0
+offset_bottom = 938.0
+script = ExtResource("1_rh01r")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 0
+offset_right = 1919.0
+offset_bottom = 1082.0
+color = Color(0.231373, 0.317647, 0.839216, 1)
+
+[node name="Button" type="Button" parent="."]
+layout_mode = 0
+offset_left = 1496.0
+offset_top = 957.0
+offset_right = 1893.0
+offset_bottom = 1048.0
+theme = ExtResource("1_5644l")
+theme_override_font_sizes/font_size = 40
+text = "Back to Main Menu"
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_ttelf")
+volume_db = -8.667
+autoplay = true
+
+[node name="RichTextLabel" type="RichTextLabel" parent="."]
+layout_mode = 0
+offset_right = 1920.0
+offset_bottom = 926.0
+theme = ExtResource("1_5644l")
+theme_override_font_sizes/normal_font_size = 50
+text = "I'm following Devworm's tutorial on Youtube:"
+
+[connection signal="pressed" from="Button" to="." method="_on_button_pressed"]

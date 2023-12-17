@@ -4,10 +4,10 @@
 [ext_resource type="Theme" uid="uid://c7rtcvk0mrocv" path="res://scene/world.tres" id="2_4dxoa"]
 
 [node name="GameOverPanel" type="Panel"]
-offset_left = 262.0
-offset_top = 161.0
-offset_right = 872.0
-offset_bottom = 446.0
+offset_left = 673.0
+offset_top = 381.0
+offset_right = 1228.0
+offset_bottom = 703.0
 script = ExtResource("1_2wa2y")
 
 [node name="RichTextLabel" type="RichTextLabel" parent="."]

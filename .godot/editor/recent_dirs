@@ -1,5 +1,7 @@
-res://script
 res://scene
+res://script
+res://dialogue
+res://art/inventory_art
 res://art/character
 res://art/environment
 res://sounds
@@ -7,4 +9,3 @@ res://shaders
 res://art
 res://inventory
 res://inventory/items
-res://art/inventory_art

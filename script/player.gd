@@ -28,9 +28,11 @@ var mouse_loc_from_player = null
 @onready var hurtBox = $hurtBox
 @onready var hurtTimer = $hurtBox/hurtTimer
 @onready var inventory = preload("res://inventory/inventory_ui.tscn")
+# Audio
 @onready var arrow_audio = $ArrowAudio
 @onready var player_dying = $PlayerDying
 @onready var pick_item = $PickItem
+
 var inv_instance:InventoryUi
 
 @onready var camera = $Camera2D
@@ -141,7 +143,7 @@ func hurtByEnemy(area):
 	is_hurt = true
 	PlayerStats.player_hit = true
 	healthChanged.emit()
-	showHit()
+	#showHit()
 	hurtTimer.start(1.0)
 	await hurtTimer.timeout
 	is_hurt = false
