@@ -49,13 +49,13 @@ func add_stick_to_world():
 	
 func add_apple_tree_to_world():
 	var rand_value = free_cells[randi() % free_cells.size()]
-	print("AppleTree - randvalue: %s" % rand_value)
+	#print("AppleTree - randvalue: %s" % rand_value)
 	var appleTree = AppleTreeSpawner.instantiate()
 	appleTree.position = tilemap.map_to_local(rand_value)
 	world.add_child(appleTree)
-	print("AppleTree: %s" % tilemap.map_to_local(rand_value))
+	#print("AppleTree: %s" % tilemap.map_to_local(rand_value))
 	var remove_id = free_cells.find(rand_value)
-	print("Remove ID: %s" % remove_id)
+	#print("Remove ID: %s" % remove_id)
 	free_cells.remove_at(remove_id)
 
 
@@ -64,7 +64,7 @@ func add_slime_to_world():
 	var slime = SlimeSpawner.instantiate()
 	slime.position = tilemap.map_to_local(rand_value)
 	world.add_child(slime)
-	print("Slime: %s" % tilemap.map_to_local(rand_value))
+	#print("Slime: %s" % tilemap.map_to_local(rand_value))
 
 func _on_timer_timeout():
 	if count_apple_trees < max_apple_trees:
@@ -72,6 +72,11 @@ func _on_timer_timeout():
 		count_apple_trees += 1
 	add_stick_to_world()
 	if count_slimes < max_slimes:
-		add_slime_to_world()
+		#add_slime_to_world()
 		count_slimes += 1
 	$Timer.start()
+
+
+func _input(event):
+	if event.is_action_pressed("ui_cancel"):
+		get_tree().quit()

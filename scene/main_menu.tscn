@@ -56,6 +56,7 @@ theme_override_font_sizes/font_size = 55
 text = "Credits"
 
 [node name="SettingsButton" type="Button" parent="."]
+layout_mode = 0
 offset_left = 900.0
 offset_top = 609.0
 offset_right = 1098.0

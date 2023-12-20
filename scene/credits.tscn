@@ -15,7 +15,7 @@ script = ExtResource("1_rh01r")
 layout_mode = 0
 offset_right = 1919.0
 offset_bottom = 1082.0
-color = Color(0.231373, 0.317647, 0.839216, 1)
+color = Color(0.141176, 0.192157, 0.603922, 1)
 
 [node name="Button" type="Button" parent="."]
 layout_mode = 0
@@ -34,10 +34,32 @@ autoplay = true
 
 [node name="RichTextLabel" type="RichTextLabel" parent="."]
 layout_mode = 0
-offset_right = 1920.0
+offset_left = 54.0
+offset_top = 100.0
+offset_right = 1878.0
 offset_bottom = 926.0
 theme = ExtResource("1_5644l")
+theme_override_colors/default_color = Color(1, 1, 1, 1)
 theme_override_font_sizes/normal_font_size = 50
-text = "I'm following Devworm's tutorial on Youtube:"
+text = "I'm following Devworm's tutorial on Youtube:
+https://www.youtube.com/playlist?list=PL3cGrGHvkwn2NOT1LSwf5d2XZmlc5Bjsn
+
+
+Big thanks to Sara Garrard (sonatina.itch.io) for the music LET'S ADVENTURE!
+
+
+SceneManager:
+https://www.nightquestgames.com/changing-scenes-in-godot-4-is-easy/"
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 0
+offset_left = 28.0
+offset_top = 12.0
+offset_right = 241.0
+offset_bottom = 73.0
+theme = ExtResource("1_5644l")
+theme_override_colors/font_color = Color(1, 0, 0, 1)
+theme_override_font_sizes/font_size = 70
+text = "Credits"
 
 [connection signal="pressed" from="Button" to="." method="_on_button_pressed"]

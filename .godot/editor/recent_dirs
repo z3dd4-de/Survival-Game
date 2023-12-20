@@ -1,10 +1,11 @@
 res://scene
 res://script
+res://art/environment
+res://sounds
+res://art/character/Skeleton
 res://dialogue
 res://art/inventory_art
 res://art/character
-res://art/environment
-res://sounds
 res://shaders
 res://art
 res://inventory

@@ -1,0 +1,49 @@
+[gd_scene load_steps=7 format=3 uid="uid://ltwdu7bfam6u"]
+
+[ext_resource type="Script" path="res://script/chest.gd" id="1_1s18u"]
+[ext_resource type="Texture2D" uid="uid://mrl304n7jvyd" path="res://art/environment/survivalgame-randomitems.png" id="1_pc5sx"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5k2dy"]
+atlas = ExtResource("1_pc5sx")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_02yr3"]
+atlas = ExtResource("1_pc5sx")
+region = Rect2(16, 0, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_07dw8"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5k2dy")
+}],
+"loop": false,
+"name": &"closed",
+"speed": 0.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_02yr3")
+}],
+"loop": false,
+"name": &"open",
+"speed": 0.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_u5w2m"]
+size = Vector2(21, 21)
+
+[node name="Chest" type="StaticBody2D"]
+script = ExtResource("1_1s18u")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_07dw8")
+animation = &"open"
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("RectangleShape2D_u5w2m")
+
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
+[connection signal="body_exited" from="Area2D" to="." method="_on_area_2d_body_exited"]

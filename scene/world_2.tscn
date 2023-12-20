@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=3 uid="uid://c1qcc6lclah8e"]
+[gd_scene load_steps=24 format=3 uid="uid://c1qcc6lclah8e"]
 
 [ext_resource type="Texture2D" uid="uid://l5vo2jow3a5c" path="res://art/environment/survivalgame-terrian-defult.png" id="1_majrj"]
 [ext_resource type="Script" path="res://script/world_2.gd" id="1_n13ug"]
@@ -10,6 +10,7 @@
 [ext_resource type="Resource" uid="uid://ebe43cksatol" path="res://inventory/items/water_potion.tres" id="6_btd0h"]
 [ext_resource type="Texture2D" uid="uid://dd465yq10pjaf" path="res://art/environment/SmokeParticle.png" id="7_emlth"]
 [ext_resource type="PackedScene" uid="uid://pkc5es7jq8x2" path="res://scene/npc.tscn" id="10_sq5g1"]
+[ext_resource type="PackedScene" uid="uid://dw5wtj55dpfxg" path="res://scene/skeleton.tscn" id="11_a1fg3"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_ec13f"]
 texture = ExtResource("1_majrj")
@@ -1002,5 +1003,8 @@ polygon = PackedVector2Array(570, 1721, 569, 1752, 638, 1755, 644, 1860, 665, 18
 
 [node name="npc" parent="." instance=ExtResource("10_sq5g1")]
 position = Vector2(-339, 1944)
+
+[node name="Skeleton" parent="." instance=ExtResource("11_a1fg3")]
+position = Vector2(-580, 2572)
 
 [connection signal="body_entered" from="world2openingcutscene/player_detection" to="." method="_on_player_detection_body_entered"]

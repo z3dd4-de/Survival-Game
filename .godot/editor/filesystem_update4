@@ -1,10 +1,13 @@
-res://inventory/inventory_ui_slot.tscn
+res://scene/npc_quest.tscn
 res://inventory/stick_collactable.gd
-res://script/pick_water_area.gd
 res://inventory/player_inventory.tres
+res://script/pick_water_area.gd
 res://scene/world.tres
 res://shaders/player.gdshader
 res://shaders/water_shader_material.gdshader
+res://script/skeleton.gd
+res://scene/skeleton.tscn
+res://inventory/inventory_ui_slot.tscn
 res://scene/camp_fire.tscn
 res://scene/slime.tscn
 res://scene/keyboard_layout_panel.tscn
@@ -16,7 +19,7 @@ res://scene/player.tscn
 res://scene/npc.tscn
 res://dialogue/dialogue.tscn
 res://scene/credits.tscn
-res://scene/scene_manager.tscn
-res://dialogue/npc_dialogue_1.json
-res://script/game_over.gd
-res://script/player.gd
+res://scene/test_map.tscn
+res://script/test_map.gd
+res://script/chest.gd
+res://scene/chest.tscn
