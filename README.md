@@ -24,13 +24,17 @@ Additionally, I implemented further improvements to my game:
 - Music (OGG): LET'S ADVENTURE! by Sara Garrard (sonatina.itch.io)
 - Sounds (MP3): arrow, slime hit, slime died, player puts item in inventory, player died
 - Screen messages (hints, tutorial...)
+- New enemy: skeleton (with sounds: hit, laugh, die)
+- New static item: chest (drops health potion)
+- New item: health potion: restores 100 health points
 
 PLANNED:
 - Larger World
+- Switching inventory to GLoot
 - NPC and quests
 - More enemies (stronger, more health points)
 - More sounds
-- Credits on main menu
+- Credits on main menu (already prepared)
 - Settings (screen size, audio volume, music on/off, difficulty)
 - Player level (EXP)
 - Simple crafting system (sticks -> arrows, sticks -> campfire, slime -> health potion...)
@@ -39,7 +43,7 @@ PLANNED:
 
 KNOWN BUGS:
 - After slime hit player it loses detection of the player and doesn't follow him
-- Removal of items from the inventory doesn't work, thus player cannot drink or eat and dies at day 4
+- Removal of items from the inventory doesn't work, thus player cannot drink or eat and dies at day 4/5
 - Switching animation to NPC house (house not shown when animation finishes)
 - When game over screen is shown, system time still counts and player dies again every ... seconds (game loop not stopped correctly)
 - Layout of the game over screen needs to be fixed
