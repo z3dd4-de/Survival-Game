@@ -28,12 +28,14 @@ var mouse_loc_from_player = null
 @onready var hurtBox = $hurtBox
 @onready var hurtTimer = $hurtBox/hurtTimer
 @onready var inventory = preload("res://inventory/inventory_ui.tscn")
+@onready var inventory_stacked = $InventoryStacked
+@onready var ctrl_inventory_stacked = $CtrlInventoryStacked
 # Audio
 @onready var arrow_audio = $ArrowAudio
 @onready var player_dying = $PlayerDying
 @onready var pick_item = $PickItem
 
-var inv_instance:InventoryUi
+#var inv_instance:InventoryUi
 
 @onready var camera = $Camera2D
 
@@ -50,7 +52,8 @@ func _physics_process(_delta):
 
 
 func _ready():
-	inv_instance = InventoryUi.new()
+	#inv_instance = InventoryUi.new()
+	pass
 
 
 func play_anim(dir):
@@ -169,7 +172,7 @@ func showHit():
 
 
 func collect(item):
-	inv.insert(item)
+	#inv.insert(item)
 	pick_item.play()
 
 
@@ -205,8 +208,8 @@ func _on_thirst_timer_timeout():
 
 func drink():
 	#inventory.remove_water()
-	inv_instance.remove_water()
-	#pass
+	#inv_instance.remove_water()
+	pass
 
 
 func eat():

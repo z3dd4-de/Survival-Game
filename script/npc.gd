@@ -41,7 +41,7 @@ func _process(delta):
 			IDLE:
 				pass
 			NEW_DIR:
-				dir = choose([Vector2.RIGHT, Vector2.UP, Vector2.DOWN, Vector2.LEFT])
+				dir = Helpers.choose([Vector2.RIGHT, Vector2.UP, Vector2.DOWN, Vector2.LEFT])
 			MOVE:
 				move(delta)
 
@@ -51,11 +51,6 @@ func _process(delta):
 		is_roaming = false
 		is_chatting = true
 		$AnimatedSprite2D.play("idle")
-
-
-func choose(array: Array):
-	array.shuffle()
-	return array.front()
 
 
 func move(delta):
@@ -76,8 +71,8 @@ func _on_chat_detection_area_body_exited(body):
 
 
 func _on_timer_timeout():
-	$Timer.wait_time = choose([0.5, 1.0, 1.5])
-	current_state = choose([IDLE, NEW_DIR, MOVE])
+	$Timer.wait_time = Helpers.choose([0.5, 1.0, 1.5])
+	current_state = Helpers.choose([IDLE, NEW_DIR, MOVE])
 
 
 func set_start_position(pos: Vector2):

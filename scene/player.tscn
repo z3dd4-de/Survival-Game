@@ -1,14 +1,16 @@
-[gd_scene load_steps=81 format=3 uid="uid://d0mn0prgj1gs5"]
+[gd_scene load_steps=83 format=3 uid="uid://d0mn0prgj1gs5"]
 
 [ext_resource type="Texture2D" uid="uid://dj7jmxu1ubvg6" path="res://art/character/survivalgame-player-green.png" id="1_8tmwr"]
 [ext_resource type="Script" path="res://script/player.gd" id="1_nrwr5"]
-[ext_resource type="Resource" uid="uid://cqix28w6w6178" path="res://inventory/player_inventory.tres" id="2_pdg2a"]
 [ext_resource type="Shader" path="res://shaders/player.gdshader" id="3_1qjku"]
 [ext_resource type="PackedScene" uid="uid://vhfgbpafkxse" path="res://inventory/inventory_ui.tscn" id="4_d4xiu"]
 [ext_resource type="Script" path="res://shaders/PlayerShader.gd" id="5_lgqy1"]
 [ext_resource type="AudioStream" uid="uid://cuw5w8j7rb683" path="res://sounds/arrow.mp3" id="7_jv4bs"]
 [ext_resource type="AudioStream" uid="uid://bf55l45o6cipa" path="res://sounds/male-scream-in-fear.mp3" id="8_23vgo"]
 [ext_resource type="AudioStream" uid="uid://c25ja0hfql47c" path="res://sounds/inventory-grab.mp3" id="9_0b7pb"]
+[ext_resource type="Script" path="res://addons/gloot/ui/ctrl_inventory_stacked.gd" id="9_v7y7g"]
+[ext_resource type="Script" path="res://addons/gloot/core/inventory_stacked.gd" id="10_1e16a"]
+[ext_resource type="Resource" uid="uid://c45uhadq0vieg" path="res://inventory/inventory_stacked.tres" id="11_4dxp5"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_6cy6m"]
 shader = ExtResource("3_1qjku")
@@ -587,7 +589,6 @@ radius = 6.0
 
 [node name="Player" type="CharacterBody2D"]
 script = ExtResource("1_nrwr5")
-inv = ExtResource("2_pdg2a")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 y_sort_enabled = true
@@ -644,6 +645,21 @@ volume_db = -5.098
 
 [node name="PickItem" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("9_0b7pb")
+
+[node name="CtrlInventoryStacked" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_left = 45.0
+offset_top = -77.0
+offset_right = 166.0
+offset_bottom = 22.0
+script = ExtResource("9_v7y7g")
+inventory_path = NodePath("../InventoryStacked")
+
+[node name="InventoryStacked" type="Node" parent="."]
+script = ExtResource("10_1e16a")
+capacity = 200.0
+item_protoset = ExtResource("11_4dxp5")
 
 [connection signal="timeout" from="hungerTimer" to="." method="_on_hunger_timer_timeout"]
 [connection signal="timeout" from="thirstTimer" to="." method="_on_thirst_timer_timeout"]

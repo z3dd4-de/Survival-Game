@@ -42,7 +42,7 @@ func _process(delta):
 
 func add_stick_to_world():
 	var rand_value = free_cells[randi() % free_cells.size()]
-	print(rand_value)
+	#print(rand_value)
 	var stick = StickSpawner.instantiate()
 	stick.position = tilemap.map_to_local(rand_value)
 	add_child(stick)

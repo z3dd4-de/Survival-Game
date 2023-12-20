@@ -1,6 +1,6 @@
 class_name InventoryUi extends Control
 
-@onready var inv: Inventory = preload("res://inventory/player_inventory.tres")
+@onready var inv: InventoryEx = preload("res://inventory/player_inventory.tres")
 @onready var slots: Array = $NinePatchRect/GridContainer.get_children()
 
 var is_open = false

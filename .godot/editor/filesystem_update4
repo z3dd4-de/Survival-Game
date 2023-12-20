@@ -23,3 +23,17 @@ res://scene/test_map.tscn
 res://script/test_map.gd
 res://script/chest.gd
 res://scene/chest.tscn
+res://script/frog.gd
+res://scene/frog.tscn
+res://scene/slime_collectable.tscn
+res://scene/health_potion_collectable.tscn
+res://default_bus_layout.tres
+res://script/global/helpers.gd
+res://script/npc.gd
+res://script/global/audio_collection.gd
+res://scene/audio_collection.tscn
+res://script/global/AudioManager.gd
+res://scene/audio_manager.tscn
+res://script/player.gd
+res://script/inventory.gd
+res://inventory/inventory_ui.gd

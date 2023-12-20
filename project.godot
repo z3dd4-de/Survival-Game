@@ -18,8 +18,10 @@ config/icon="res://icon.svg"
 
 [autoload]
 
-SceneManager="*res://script/SceneManager.gd"
-PlayerStats="*res://script/player_stats.gd"
+SceneManager="*res://script/global/SceneManager.gd"
+PlayerStats="*res://script/global/player_stats.gd"
+Helpers="*res://script/global/helpers.gd"
+AudioManager="*res://scene/audio_manager.tscn"
 
 [display]
 
@@ -30,6 +32,10 @@ window/stretch/mode="viewport"
 [dotnet]
 
 project/assembly_name="Survival Game"
+
+[editor_plugins]
+
+enabled=PackedStringArray("res://addons/gloot/plugin.cfg")
 
 [input]
 

@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://dyniigaodesyl"]
+[gd_scene load_steps=15 format=3 uid="uid://dyniigaodesyl"]
 
 [ext_resource type="Script" path="res://script/test_map.gd" id="1_tv5xl"]
 [ext_resource type="Texture2D" uid="uid://l5vo2jow3a5c" path="res://art/environment/survivalgame-terrian-defult.png" id="2_c0xo2"]
@@ -8,6 +8,7 @@
 [ext_resource type="PackedScene" uid="uid://d0mn0prgj1gs5" path="res://scene/player.tscn" id="6_55ccf"]
 [ext_resource type="PackedScene" uid="uid://dw5wtj55dpfxg" path="res://scene/skeleton.tscn" id="7_v4b1b"]
 [ext_resource type="PackedScene" uid="uid://ltwdu7bfam6u" path="res://scene/chest.tscn" id="8_3m25m"]
+[ext_resource type="PackedScene" uid="uid://ckjo8h1hayvsi" path="res://scene/frog.tscn" id="9_0ki4w"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_6syes"]
 texture = ExtResource("2_c0xo2")
@@ -299,5 +300,8 @@ polygon = PackedVector2Array(631, -1, 642, 14, 640, 401, -2, 401, -1, 387, 2, -1
 
 [node name="Chest" parent="." instance=ExtResource("8_3m25m")]
 position = Vector2(56, 258)
+
+[node name="Frog" parent="." instance=ExtResource("9_0ki4w")]
+position = Vector2(314, 167)
 
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

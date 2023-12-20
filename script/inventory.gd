@@ -1,4 +1,4 @@
-class_name Inventory extends Resource
+class_name InventoryEx extends Resource
 
 @export var slots: Array[InvSlot]
 

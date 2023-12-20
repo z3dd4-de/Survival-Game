@@ -36,11 +36,6 @@ func get_state():
 			current_state = NEW_DIR
 
 
-func choose(array: Array):
-	array.shuffle()
-	return array.front()
-
-
 func _process(delta):
 	if player != null:
 		var oldpos = position
@@ -77,7 +72,7 @@ func _process(delta):
 			HIT:
 				$AnimatedSprite2D.play("hit")
 			NEW_DIR:
-				dir = choose([Vector2.RIGHT, Vector2.UP, Vector2.DOWN, Vector2.LEFT])
+				dir = Helpers.choose([Vector2.RIGHT, Vector2.UP, Vector2.DOWN, Vector2.LEFT])
 				$AnimatedSprite2D.play("walk")
 				current_state = WALK
 	
@@ -131,7 +126,7 @@ func _on_hit_box_area_entered(area):
 
 
 func _on_timer_timeout():
-	$Timer.wait_time = choose([0.5, 1.0, 1.5])
+	$Timer.wait_time = Helpers.choose([0.5, 1.0, 1.5])
 	if !is_dead:
 		get_state()
 		$Timer.start()
