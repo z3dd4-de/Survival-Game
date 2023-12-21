@@ -27,7 +27,7 @@ var mouse_loc_from_player = null
 @onready var current_thirst = max_thirst
 @onready var hurtBox = $hurtBox
 @onready var hurtTimer = $hurtBox/hurtTimer
-@onready var inventory = preload("res://inventory/inventory_ui.tscn")
+#@onready var inventory = preload("res://inventory/inventory_ui.tscn")
 @onready var inventory_stacked = $InventoryStacked
 @onready var ctrl_inventory_stacked = $CtrlInventoryStacked
 # Audio
@@ -39,6 +39,11 @@ var mouse_loc_from_player = null
 
 @onready var camera = $Camera2D
 
+var apple: InventoryItem
+var stick: InventoryItem
+var water_potion: InventoryItem
+var health_potion: InventoryItem
+var slime: InventoryItem
 
 func _physics_process(_delta):
 	if is_alive:
@@ -53,7 +58,24 @@ func _physics_process(_delta):
 
 func _ready():
 	#inv_instance = InventoryUi.new()
-	pass
+	PlayerStats.StickCollected.connect(collect_stick)
+	#apple = inventory_stacked.create_and_add_item("apple")
+	#stick = inventory_stacked.create_and_add_item("stick")
+	#water_potion = inventory_stacked.create_and_add_item("water_potion")
+	#health_potion = inventory_stacked.create_and_add_item("health_potion")
+
+
+func collect_stick():
+	print("Stick collected")
+	var newitem = InventoryItem.new()
+	newitem.prototype_id = "stick"
+	print(newitem.protoset)
+	if inventory_stacked.can_add_item(newitem):
+		inventory_stacked.add_item_automerge(newitem)
+		print("if")
+	else:
+		inventory_stacked.create_and_add_item("stick")
+		print("else")
 
 
 func play_anim(dir):
@@ -124,7 +146,10 @@ func handleInput():
 		add_child(arrow_instance)
 		await get_tree().create_timer(0.4).timeout
 		bow_cooldown = true
-		
+	
+	if Input.is_action_just_pressed("inventory"):
+		$CtrlInventoryStacked.visible = !$CtrlInventoryStacked.visible
+	
 	if Input.is_action_just_pressed("drink"):
 		drink()
 		#drinkWater.emit()

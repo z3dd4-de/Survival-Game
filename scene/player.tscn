@@ -1,9 +1,8 @@
-[gd_scene load_steps=83 format=3 uid="uid://d0mn0prgj1gs5"]
+[gd_scene load_steps=82 format=3 uid="uid://d0mn0prgj1gs5"]
 
 [ext_resource type="Texture2D" uid="uid://dj7jmxu1ubvg6" path="res://art/character/survivalgame-player-green.png" id="1_8tmwr"]
 [ext_resource type="Script" path="res://script/player.gd" id="1_nrwr5"]
 [ext_resource type="Shader" path="res://shaders/player.gdshader" id="3_1qjku"]
-[ext_resource type="PackedScene" uid="uid://vhfgbpafkxse" path="res://inventory/inventory_ui.tscn" id="4_d4xiu"]
 [ext_resource type="Script" path="res://shaders/PlayerShader.gd" id="5_lgqy1"]
 [ext_resource type="AudioStream" uid="uid://cuw5w8j7rb683" path="res://sounds/arrow.mp3" id="7_jv4bs"]
 [ext_resource type="AudioStream" uid="uid://bf55l45o6cipa" path="res://sounds/male-scream-in-fear.mp3" id="8_23vgo"]
@@ -610,14 +609,6 @@ limit_top = -476
 limit_right = 1276
 limit_bottom = 2700
 
-[node name="Inventory_UI" parent="." instance=ExtResource("4_d4xiu")]
-z_index = 20
-y_sort_enabled = true
-offset_left = -41.0
-offset_top = -76.0
-offset_right = 42.0
-offset_bottom = -14.0
-
 [node name="Marker2D" type="Marker2D" parent="."]
 
 [node name="hurtBox" type="Area2D" parent="."]
@@ -649,10 +640,11 @@ stream = ExtResource("9_0b7pb")
 [node name="CtrlInventoryStacked" type="Control" parent="."]
 layout_mode = 3
 anchors_preset = 0
-offset_left = 45.0
-offset_top = -77.0
-offset_right = 166.0
-offset_bottom = 22.0
+offset_left = -93.0
+offset_top = -128.0
+offset_right = 142.0
+offset_bottom = 6.0
+scale = Vector2(0.8, 0.8)
 script = ExtResource("9_v7y7g")
 inventory_path = NodePath("../InventoryStacked")
 

@@ -6,12 +6,6 @@
 script = ExtResource("1_hh2fj")
 json_data = "[
     {
-        \"id\": \"apple\",
-        \"image\": \"res://art/environment/apple-icon.png\",
-        \"name\": \"Apple\",
-        \"stack_size\": \"1\"
-    },
-    {
         \"id\": \"stick\",
         \"image\": \"res://art/environment/stick-icon.png\",
         \"name\": \"Stick\",
@@ -19,7 +13,7 @@ json_data = "[
     },
     {
         \"id\": \"water_potion\",
-        \"image\": \"res://art/water_potion.png\",
+        \"image\": \"res://inventory/water_potion.png\",
         \"name\": \"Water potion\",
         \"stack_size\": \"1\"
     },
@@ -33,6 +27,12 @@ json_data = "[
         \"id\": \"health_potion\",
         \"image\": \"res://art/health_potion.png\",
         \"name\": \"Health potion\",
+        \"stack_size\": \"1\"
+    },
+    {
+        \"id\": \"apple\",
+        \"image\": \"res://art/environment/apple-icon.png\",
+        \"name\": \"Apple\",
         \"stack_size\": \"1\"
     }
 ]"

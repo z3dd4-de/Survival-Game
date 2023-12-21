@@ -13,6 +13,7 @@ signal DayChanged
 signal DrinkWater
 signal EatApple
 signal sendMessage
+signal StickCollected
 
 
 func _ready():

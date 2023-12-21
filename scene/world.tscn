@@ -1,4 +1,4 @@
-[gd_scene load_steps=34 format=3 uid="uid://d0ylgb5olq8hw"]
+[gd_scene load_steps=35 format=3 uid="uid://d0ylgb5olq8hw"]
 
 [ext_resource type="PackedScene" uid="uid://d0mn0prgj1gs5" path="res://scene/player.tscn" id="1_cv17m"]
 [ext_resource type="Script" path="res://script/world.gd" id="1_u3rvd"]
@@ -25,6 +25,7 @@
 [ext_resource type="Script" path="res://script/day_text.gd" id="19_csa84"]
 [ext_resource type="PackedScene" uid="uid://hy6wdxrypvps" path="res://scene/keyboard_layout_panel.tscn" id="19_ssdro"]
 [ext_resource type="PackedScene" uid="uid://1gyxjl47e7if" path="res://scene/game_over_panel.tscn" id="21_8srsg"]
+[ext_resource type="Script" path="res://script/FPSCounter.gd" id="22_7epms"]
 [ext_resource type="PackedScene" uid="uid://c1qcc6lclah8e" path="res://scene/world_2.tscn" id="26_q5dhs"]
 [ext_resource type="AudioStream" uid="uid://nvqbsu0gbl6n" path="res://sounds/sonatina_letsadventure_2Harbingers.ogg" id="27_5gxfb"]
 [ext_resource type="PackedScene" uid="uid://bcjq1xw84ydbb" path="res://scene/message_layer.tscn" id="28_3ystj"]
@@ -884,6 +885,22 @@ offset_top = 323.0
 offset_right = 1323.0
 offset_bottom = 608.0
 player = NodePath("../../Player")
+
+[node name="FPSPanel" type="Panel" parent="CanvasLayer"]
+visible = false
+offset_left = 18.0
+offset_top = 1022.0
+offset_right = 96.0
+offset_bottom = 1054.0
+
+[node name="FPSCounter" type="Label" parent="CanvasLayer/FPSPanel"]
+layout_mode = 0
+offset_left = 6.0
+offset_top = 4.0
+offset_right = 46.0
+offset_bottom = 27.0
+text = "FPS"
+script = ExtResource("22_7epms")
 
 [node name="day_and_night" parent="." instance=ExtResource("13_pnjbg")]
 z_index = 1

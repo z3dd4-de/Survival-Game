@@ -1,7 +1,9 @@
 class_name Stick extends StaticBody2D
 
-@export var item: InvItem
+#@export var item: InvItem
 var player = null
+
+#signal StickCollected
 
 @onready var tutorial_message_4_shown = false
 
@@ -19,7 +21,8 @@ func _process(_delta):
 
 func playercollect():
 	if Input.is_action_just_pressed("harvest") and player != null:
-		player.collect(item)
+		PlayerStats.StickCollected.emit()
+		#player.collect(item)
 		await get_tree().create_timer(0.3).timeout
 		self.queue_free()
 
