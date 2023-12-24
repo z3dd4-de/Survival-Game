@@ -52,7 +52,7 @@ animation = &"apples"
 shape = SubResource("CircleShape2D_kv6ea")
 
 [node name="growth_timer" type="Timer" parent="."]
-wait_time = 60.0
+wait_time = 3.967
 one_shot = true
 autostart = true
 

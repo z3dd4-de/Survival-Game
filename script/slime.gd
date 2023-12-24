@@ -86,8 +86,9 @@ func drop_slime():
 
 func playercollect():
 	if Input.is_action_just_pressed("harvest") and player != null and $slime_collectable/collect_area.visible:
-		player.collect(itemRes)
+		#player.collect(itemRes)
 		#inv_pick.play()
+		PlayerStats.SlimeCollected.emit()
 		await get_tree().create_timer(0.3).timeout
 		self.queue_free()
 

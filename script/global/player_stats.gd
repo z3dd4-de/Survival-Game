@@ -13,7 +13,13 @@ signal DayChanged
 signal DrinkWater
 signal EatApple
 signal sendMessage
+
+#Collect Items: player.gd connects to <item>
 signal StickCollected
+signal AppleCollected
+signal WaterCollected
+signal HealthPotionCollected
+signal SlimeCollected
 
 
 func _ready():

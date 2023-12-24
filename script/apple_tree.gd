@@ -54,6 +54,7 @@ func drop_apple():
 	apple_instance.rotation = rotation
 	apple_instance.position = $Marker2D.position
 	add_child(apple_instance)
-	player.collect(item)
+	#player.collect(item)
+	PlayerStats.AppleCollected.emit()
 	await get_tree().create_timer(3).timeout
 	$growth_timer.start()

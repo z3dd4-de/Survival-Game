@@ -1,3 +1,4 @@
+res://shaders
 res://inventory
 res://script
 res://scene
@@ -8,6 +9,5 @@ res://sounds
 res://art/character/Skeleton
 res://dialogue
 res://art/inventory_art
-res://shaders
 res://art
 res://inventory/items

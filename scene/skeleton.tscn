@@ -1,4 +1,4 @@
-[gd_scene load_steps=86 format=3 uid="uid://dw5wtj55dpfxg"]
+[gd_scene load_steps=87 format=3 uid="uid://dw5wtj55dpfxg"]
 
 [ext_resource type="Script" path="res://script/skeleton.gd" id="1_fhb2i"]
 [ext_resource type="Texture2D" uid="uid://drbbj412huo0y" path="res://art/character/Skeleton/Skeleton Attack.png" id="1_gw2xo"]
@@ -539,6 +539,10 @@ height = 24.0
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_8ehc0"]
 size = Vector2(33, 14)
 
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_4bg01"]
+radius = 9.0
+height = 24.0
+
 [node name="Skeleton" type="CharacterBody2D"]
 script = ExtResource("1_fhb2i")
 
@@ -594,6 +598,12 @@ volume_db = -6.741
 [node name="skeletonHit" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("12_8t3v0")
 volume_db = -7.704
+
+[node name="CollisionArea" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CollisionArea"]
+position = Vector2(0, 3)
+shape = SubResource("CapsuleShape2D_4bg01")
 
 [connection signal="body_entered" from="DetectionArea" to="." method="_on_detection_area_body_entered"]
 [connection signal="body_exited" from="DetectionArea" to="." method="_on_detection_area_body_exited"]

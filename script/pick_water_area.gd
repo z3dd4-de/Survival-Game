@@ -12,7 +12,8 @@ func _process(delta):
 
 func pick_water():
 	if Input.is_action_just_pressed("harvest") and player != null:
-		player.collect(item)
+		#player.collect(item)
+		PlayerStats.WaterCollected.emit()
 
 
 func _on_body_entered(body):

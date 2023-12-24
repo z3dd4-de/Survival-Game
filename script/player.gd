@@ -12,7 +12,7 @@ var player_state
 @onready var is_hurt = false
 @onready var is_alive = true
 
-@export var inv: Inventory
+#@export var inv: Inventory
 
 var bow_equiped = false
 var bow_cooldown = true
@@ -27,9 +27,11 @@ var mouse_loc_from_player = null
 @onready var current_thirst = max_thirst
 @onready var hurtBox = $hurtBox
 @onready var hurtTimer = $hurtBox/hurtTimer
-#@onready var inventory = preload("res://inventory/inventory_ui.tscn")
+
+#Inventory
 @onready var inventory_stacked = $InventoryStacked
 @onready var ctrl_inventory_stacked = $CtrlInventoryStacked
+
 # Audio
 @onready var arrow_audio = $ArrowAudio
 @onready var player_dying = $PlayerDying
@@ -39,11 +41,11 @@ var mouse_loc_from_player = null
 
 @onready var camera = $Camera2D
 
-var apple: InventoryItem
-var stick: InventoryItem
-var water_potion: InventoryItem
-var health_potion: InventoryItem
-var slime: InventoryItem
+#var apple: InventoryItem
+#var stick: InventoryItem
+#var water_potion: InventoryItem
+#var health_potion: InventoryItem
+#var slime: InventoryItem
 
 func _physics_process(_delta):
 	if is_alive:
@@ -57,25 +59,45 @@ func _physics_process(_delta):
 
 
 func _ready():
-	#inv_instance = InventoryUi.new()
+	# Connect all items that can be picked up
 	PlayerStats.StickCollected.connect(collect_stick)
-	#apple = inventory_stacked.create_and_add_item("apple")
-	#stick = inventory_stacked.create_and_add_item("stick")
-	#water_potion = inventory_stacked.create_and_add_item("water_potion")
-	#health_potion = inventory_stacked.create_and_add_item("health_potion")
+	PlayerStats.AppleCollected.connect(collect_apple)
+	PlayerStats.WaterCollected.connect(collect_water)
+	PlayerStats.SlimeCollected.connect(collect_slime)
+	PlayerStats.HealthPotionCollected.connect(collect_health_potion)
 
 
 func collect_stick():
 	print("Stick collected")
+	collect_item("stick")
+
+
+func collect_slime():
+	print("Slime collected")
+	collect_item("slime")
+
+
+func collect_water():
+	print("Water collected")
+	collect_item("water_potion")
+
+
+func collect_apple():
+	print("Apple collected")
+	collect_item("apple")
+
+
+func collect_health_potion():
+	print("Health potion collected")
+	collect_item("health_potion")
+
+
+func collect_item(item_name: String):
 	var newitem = InventoryItem.new()
-	newitem.prototype_id = "stick"
-	print(newitem.protoset)
+	newitem.protoset = inventory_stacked.item_protoset
+	newitem.prototype_id = item_name
 	if inventory_stacked.can_add_item(newitem):
 		inventory_stacked.add_item_automerge(newitem)
-		print("if")
-	else:
-		inventory_stacked.create_and_add_item("stick")
-		print("else")
 
 
 func play_anim(dir):
@@ -119,6 +141,7 @@ func play_anim(dir):
 		elif mouse_loc_from_player.x <= -25 and mouse_loc_from_player.y <= -25:
 			$AnimatedSprite2D.play("nw-attack")
 
+
 func handleInput():
 	mouse_loc_from_player = get_global_mouse_position() - self.position
 	
@@ -158,8 +181,8 @@ func handleInput():
 	if Input.is_action_just_pressed("eat"):
 		#eatApple.emit()
 		eat()
-		pass
-	
+
+
 	play_anim(direction)
 
 func player():
@@ -238,4 +261,6 @@ func drink():
 
 
 func eat():
-	pass
+	if ctrl_inventory_stacked.has_item("apple"):
+		print("Apple")
+		
