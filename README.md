@@ -27,10 +27,11 @@ Additionally, I implemented further improvements to my game:
 - New enemy: skeleton (with sounds: hit, laugh, die)
 - New static item: chest (drops health potion)
 - New item: health potion: restores 100 health points
+- FPS counter (F12)
 
 PLANNED:
 - Larger World
-- Switching inventory to GLoot
+- Switching inventory to GLoot (prepared); chest should get an own inventory
 - NPC and quests
 - More enemies (stronger, more health points)
 - More sounds
