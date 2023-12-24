@@ -24,7 +24,7 @@ func _process(_delta):
 	playercollect()
 
 
-func _physics_process(delta):
+func _physics_process(_delta):
 	if !is_dead:
 		$detection_area/CollisionShape2D.disabled = false
 		if player != null:
@@ -41,9 +41,9 @@ func _on_detection_area_body_entered(body):
 
 
 func _on_detection_area_body_exited(body):
-	#if body.has_method("player"):
-	#	player = null
-	pass
+	if body.has_method("player"):
+		player = null
+	#pass
 
 
 func _on_hitbox_area_entered(area):

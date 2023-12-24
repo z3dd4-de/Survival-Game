@@ -1,3 +1,4 @@
+AudioStreamPlayer
 CtrlInventoryStacked
 InventoryStacked
 TextureRect
@@ -11,4 +12,3 @@ Control
 Node
 Timer
 AnimatedSprite2D
-StaticBody2D

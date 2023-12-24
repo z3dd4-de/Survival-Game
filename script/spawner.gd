@@ -43,7 +43,7 @@ func _ready():
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
+func _process(_delta):
 	pass
 
 
@@ -69,7 +69,7 @@ func add_apple_tree_to_world():
 func add_slime_to_world():
 	var rand_value = free_cells[randi() % free_cells.size()]
 	#print("Slime - randvalue: %s" % rand_value)
-	var slime = SlimeSpawner.instantiate()
+	slime = SlimeSpawner.instantiate()
 	slime.position = tilemap.map_to_local(rand_value)
 	world.add_child(slime)
 	#print("Slime: %s" % tilemap.map_to_local(rand_value))

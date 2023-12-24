@@ -23,6 +23,10 @@ var max_slimes = 3
 @onready var inventory_chest = chest.ctrl_inventory_stacked
 @onready var inventory_player = $Player.ctrl_inventory_stacked
 
+@onready var inv2 = $Player/InventoryStacked
+
+#var inventory: CtrlInventoryStacked
+
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	tilemap = get_node("TileMap")
@@ -37,14 +41,20 @@ func _ready():
 				free_cells.append(tmp)
 	
 	# init chest
-	chest.inventory_stacked.create_and_add_item("health_potion")
+	PlayerStats.inventory = $Chest/InventoryStacked
+	PlayerStats.inventory.create_and_add_item("health_potion")
+	PlayerStats.player_inventory = $Player/InventoryStacked
+	PlayerStats.c_inventory = $Chest/CtrlInventoryStacked
+	PlayerStats.cp_inventory = $Player/CtrlInventoryStacked
 	
 	$Timer.start()
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
-	pass
+func _process(_delta):
+	if Input.is_action_pressed("right_mouse") and inventory_chest.visible and inventory_player.visible:
+		PlayerStats.check_item_selected(PlayerStats.c_inventory)
+		PlayerStats.check_item_selected(PlayerStats.cp_inventory)
 
 
 func add_stick_to_world():

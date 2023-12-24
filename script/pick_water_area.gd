@@ -6,13 +6,12 @@ extends Area2D
 @onready var tutorial_message_3_shown = false
 
 
-func _process(delta):
+func _process(_delta):
 	pick_water()
 
 
 func pick_water():
 	if Input.is_action_just_pressed("harvest") and player != null:
-		#player.collect(item)
 		PlayerStats.WaterCollected.emit()
 
 

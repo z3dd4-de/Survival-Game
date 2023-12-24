@@ -1,6 +1,7 @@
 extends Node2D
 
 @onready var tutorial_message_1_shown = false
+
 func _ready():
 	pass
 

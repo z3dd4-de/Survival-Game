@@ -1,6 +1,8 @@
-[gd_scene load_steps=6 format=3 uid="uid://d1u8i88q2wc4b"]
+[gd_scene load_steps=8 format=3 uid="uid://d1u8i88q2wc4b"]
 
 [ext_resource type="Script" path="res://script/day_and_night.gd" id="1_ynb8c"]
+[ext_resource type="AudioStream" uid="uid://cu5g1hnfdfrej" path="res://sounds/insects-and-frogs-at-night-17237.mp3" id="2_cpa58"]
+[ext_resource type="AudioStream" uid="uid://c5bnyqqrpkaoj" path="res://sounds/vogel-im-wald-und-kroten-am-teich.mp3" id="3_4aeg0"]
 
 [sub_resource type="Animation" id="Animation_wmqfs"]
 length = 0.001
@@ -75,5 +77,14 @@ libraries = {
 wait_time = 30.0
 one_shot = true
 autostart = true
+
+[node name="NightSounds" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("2_cpa58")
+volume_db = -10.0
+
+[node name="DaySounds" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_4aeg0")
+volume_db = -10.0
+autoplay = true
 
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

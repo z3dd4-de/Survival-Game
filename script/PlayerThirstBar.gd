@@ -10,4 +10,4 @@ func _ready():
 
 
 func update():
-	value = player.current_thirst * 100 / player.max_thirst
+	value = int(player.current_thirst * 100 / player.max_thirst)

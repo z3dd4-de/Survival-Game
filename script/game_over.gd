@@ -33,9 +33,8 @@ func update():
 		done = true
 
 
-func _input(event):
+func _input(_event):
 	pass # Replace with function body.
-
 
 
 func _on_main_menu_button_pressed():

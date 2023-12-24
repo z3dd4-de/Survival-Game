@@ -14,7 +14,13 @@ var is_path_following = false
 var smoke_has_happened = false
 var smoke_is_happening = false
 
-func _physics_process(delta):
+
+func _ready():
+	PlayerStats.inventory = $Chest/InventoryStacked
+	PlayerStats.c_inventory = $Chest/CtrlInventoryStacked
+
+
+func _physics_process(_delta):
 	if is_opening_cutscene:
 		var path_follower = $world2openingcutscene/Path2D/PathFollow2D
 		

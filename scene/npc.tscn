@@ -165,7 +165,6 @@ radius = 4.0
 radius = 18.0278
 
 [node name="npc" type="CharacterBody2D"]
-y_sort_enabled = true
 script = ExtResource("1_o3bcq")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]

@@ -23,6 +23,7 @@ func _ready():
 	randomize()
 	start_position = position
 
+
 func _process(delta):
 	if current_state != MOVE: 
 		$AnimatedSprite2D.play("idle")
@@ -55,7 +56,10 @@ func _process(delta):
 
 func move(delta):
 	if !is_chatting:
-		position += dir * SPEED * delta
+		#position += dir * SPEED * delta
+		velocity = dir * SPEED
+		move_and_slide()
+		#move_and_collide(Vector2(1.0, 1.0) * delta)
 
 
 func _on_chat_detection_area_body_entered(body):

@@ -1,19 +1,17 @@
 class_name Player extends CharacterBody2D
 
+# Constants
 const SPEED = 100
 
+# Signals
 signal healthChanged
 signal hungerChanged
 signal thirstChanged
 signal playerDied
 
-
 var player_state
 @onready var is_hurt = false
 @onready var is_alive = true
-
-#@export var inv: Inventory
-
 var bow_equiped = false
 var bow_cooldown = true
 var arrow = preload("res://scene/arrow.tscn")
@@ -37,15 +35,9 @@ var mouse_loc_from_player = null
 @onready var player_dying = $PlayerDying
 @onready var pick_item = $PickItem
 
-#var inv_instance:InventoryUi
-
+# Camera
 @onready var camera = $Camera2D
 
-#var apple: InventoryItem
-#var stick: InventoryItem
-#var water_potion: InventoryItem
-#var health_potion: InventoryItem
-#var slime: InventoryItem
 
 func _physics_process(_delta):
 	if is_alive:
@@ -68,39 +60,34 @@ func _ready():
 
 
 func collect_stick():
-	print("Stick collected")
+	#print("Stick collected")
 	collect_item("stick")
 
 
 func collect_slime():
-	print("Slime collected")
+	#print("Slime collected")
 	collect_item("slime")
 
 
 func collect_water():
-	print("Water collected")
+	#print("Water collected")
 	collect_item("water_potion")
 
 
 func collect_apple():
-	print("Apple collected")
+	#print("Apple collected")
 	collect_item("apple")
 
 
 func collect_health_potion():
-	print("Health potion collected")
+	#print("Health potion collected")
 	collect_item("health_potion")
 
 
 func collect_item(item_name: String):
-	#var newitem = InventoryItem.new()
-	#newitem.protoset = inventory_stacked.item_protoset
-	#newitem.prototype_id = item_name
 	var newitem = get_item(item_name)
 	if inventory_stacked.can_add_item(newitem):
 		inventory_stacked.add_item_automerge(newitem)
-		#var size = inventory_stacked.get_item_stack_size(newitem)
-		#print("size of %s: %s" % [item_name, str(size)])
 		pick_item.play()
 
 
@@ -186,26 +173,23 @@ func handleInput():
 	
 	if Input.is_action_just_pressed("drink"):
 		drink()
-		#drinkWater.emit()
-		pass
 		
 	if Input.is_action_just_pressed("eat"):
-		#eatApple.emit()
 		eat()
 
-
 	play_anim(direction)
+
 
 func player():
 	pass
 
-func hurtByEnemy(area):
+
+func hurtByEnemy(_area):
 	current_health -= 10
 	checkHealth()
 	is_hurt = true
 	PlayerStats.player_hit = true
 	healthChanged.emit()
-	#showHit()
 	hurtTimer.start(1.0)
 	await hurtTimer.timeout
 	is_hurt = false
@@ -221,20 +205,12 @@ func checkHealth():
 		player_dying.play()
 		current_health = 0
 		is_alive = false
+		if ctrl_inventory_stacked.visible:
+			ctrl_inventory_stacked.visible = false
 		$AnimatedSprite2D.play("death")
 		hurtTimer.start(2)
 		await hurtTimer.timeout
 		playerDied.emit()
-		
-
-func showHit():
-	#$AnimatedSprite2D.frame.setColor...
-	pass
-
-
-#func collect(item):
-	#inv.insert(item)
-	#pick_item.play()
 
 
 func hungry():
@@ -274,21 +250,20 @@ func drink():
 
 
 func eat():
-	#var apple = get_item("apple")
-	#var size = inventory_stacked.get_item_by_id("apple").get_property("stack_size")
-	#if size >= 1:
-	#	inventory_stacked.set_item_stack_size(inventory_stacked.get_item_by_id("apple"), size - inventory_stacked.get_prototype_stack_size("apple"))
 	if remove_item("apple"):
-		current_health += 20
+		current_health += 10
+		current_hunger += 10
 		checkHealth()
 		healthChanged.emit()
 
 
-
 func remove_item(item_name: String) -> bool:
-	var size = inventory_stacked.get_item_by_id(item_name).get_property("stack_size")
-	if size >= 1:
-		inventory_stacked.set_item_stack_size(inventory_stacked.get_item_by_id(item_name), size - inventory_stacked.get_prototype_stack_size(item_name))
-		return true
+	if inventory_stacked.get_item_by_id(item_name) != null:
+		var size = inventory_stacked.get_item_by_id(item_name).get_property("stack_size")
+		if size >= 1:
+			inventory_stacked.set_item_stack_size(inventory_stacked.get_item_by_id(item_name), size - inventory_stacked.get_prototype_stack_size(item_name))
+			return true
+		else:
+			return false
 	else:
 		return false

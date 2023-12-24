@@ -90,9 +90,10 @@ func _on_detection_area_body_entered(body):
 
 
 func _on_detection_area_body_exited(body):
-	player = null
-	is_attacking = false
-	current_state = IDLE
+	if body.has_method("player"):
+		player = null
+		is_attacking = false
+		current_state = IDLE
 
 
 func take_damage(damage: int):
@@ -107,7 +108,7 @@ func take_damage(damage: int):
 
 
 func death():
-	PlayerStats.shooting_level(5) #Bonus for kill
+	PlayerStats.shooting_level(10) #Bonus for kill
 	is_dead = true
 	$skeletonDies.play()
 	$AnimatedSprite2D.play("dead")

@@ -1,4 +1,4 @@
-[gd_scene load_steps=35 format=3 uid="uid://d0ylgb5olq8hw"]
+[gd_scene load_steps=36 format=3 uid="uid://d0ylgb5olq8hw"]
 
 [ext_resource type="PackedScene" uid="uid://d0mn0prgj1gs5" path="res://scene/player.tscn" id="1_cv17m"]
 [ext_resource type="Script" path="res://script/world.gd" id="1_u3rvd"]
@@ -29,6 +29,7 @@
 [ext_resource type="PackedScene" uid="uid://c1qcc6lclah8e" path="res://scene/world_2.tscn" id="26_q5dhs"]
 [ext_resource type="AudioStream" uid="uid://nvqbsu0gbl6n" path="res://sounds/sonatina_letsadventure_2Harbingers.ogg" id="27_5gxfb"]
 [ext_resource type="PackedScene" uid="uid://bcjq1xw84ydbb" path="res://scene/message_layer.tscn" id="28_3ystj"]
+[ext_resource type="PackedScene" uid="uid://ckjo8h1hayvsi" path="res://scene/frog.tscn" id="30_ppfoa"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_20s36"]
 texture = ExtResource("3_ekj0q")
@@ -931,6 +932,21 @@ autoplay = true
 visible = false
 offset = Vector2(250, 10)
 transform = Transform2D(1, 0, 0, 1, 250, 10)
+
+[node name="Frog" parent="." instance=ExtResource("30_ppfoa")]
+position = Vector2(-540, 668)
+
+[node name="Frog2" parent="." instance=ExtResource("30_ppfoa")]
+position = Vector2(-457, 769)
+
+[node name="Frog3" parent="." instance=ExtResource("30_ppfoa")]
+position = Vector2(-552, 806)
+
+[node name="Frog4" parent="." instance=ExtResource("30_ppfoa")]
+position = Vector2(-427, 871)
+
+[node name="Frog5" parent="." instance=ExtResource("30_ppfoa")]
+position = Vector2(-450, 607)
 
 [connection signal="timeout" from="spawner/Timer" to="spawner" method="_on_timer_timeout"]
 [connection signal="body_entered" from="water_collect_area" to="water_collect_area" method="_on_body_entered"]

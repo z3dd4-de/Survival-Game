@@ -9,7 +9,7 @@ var apple = preload("res://scene/apple_collectable.tscn")
 @export var item: InvItem
 var player = null
 
-@onready var tutorial_message_3_shown = false
+#@onready var tutorial_message_3_shown = false
 
 func _ready():
 	if current_state == state.NO_APPLES:
@@ -32,9 +32,9 @@ func _on_pickable_area_body_entered(body):
 	if body.has_method("player"):
 		player_in_area = true
 		player = body
-		if !tutorial_message_3_shown:
+		if !PlayerStats.tutorial_message_3_shown:
 			PlayerStats.send_message("You might want to pick some apples with \"E\" (when they are ready)")
-			tutorial_message_3_shown = true
+			PlayerStats.tutorial_message_3_shown = true
 
 
 func _on_pickable_area_body_exited(body):

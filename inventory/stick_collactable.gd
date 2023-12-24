@@ -28,4 +28,5 @@ func playercollect():
 
 
 func _on_interactable_area_body_exited(body):
-	player = null
+	if body.has_method("player"):
+		player = null

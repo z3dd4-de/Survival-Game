@@ -52,7 +52,7 @@ func _on_timer_timeout():
 		if jump_cnt_y > 3:
 			state = JUMP_UP
 			jump_cnt_y -= 1
-	print("Frog x, y: %d" % [jump_cnt_x, jump_cnt_y])
+	#print("Frog x, y: %d - %d" % [jump_cnt_x, jump_cnt_y])
 	timer_random()
 
 

@@ -21,6 +21,15 @@ signal WaterCollected
 signal HealthPotionCollected
 signal SlimeCollected
 
+#bugfix: not every apple tree needs its own tutorial message
+var tutorial_message_3_shown = false
+var tutorial_message_inv_shown = false
+
+#inventories
+var inventory: InventoryStacked				#changes to whatever inv is open
+var c_inventory: CtrlInventoryStacked		#changes to whatever inv is open
+var player_inventory: InventoryStacked		#constant
+var cp_inventory: CtrlInventoryStacked		#constant
 
 func _ready():
 	experience = 0
@@ -65,3 +74,16 @@ func shooting_level(hit = 1):
 
 func send_message(text: String):
 	sendMessage.emit(text)
+
+
+func check_item_selected(inv: CtrlInventoryStacked):
+	if inv == PlayerStats.c_inventory:
+		var item: InventoryItem = PlayerStats.c_inventory.get_selected_inventory_item()
+		if item == null:
+			return
+		PlayerStats.inventory.transfer_autosplitmerge(item, PlayerStats.player_inventory)
+	else:
+		var item: InventoryItem = PlayerStats.cp_inventory.get_selected_inventory_item()
+		if item == null:
+			return
+		PlayerStats.player_inventory.transfer_autosplitmerge(item, PlayerStats.inventory)

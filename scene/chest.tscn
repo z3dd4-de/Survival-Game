@@ -34,7 +34,7 @@ animations = [{
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_u5w2m"]
-size = Vector2(21, 21)
+size = Vector2(26, 24)
 
 [node name="Chest" type="StaticBody2D"]
 script = ExtResource("1_1s18u")
@@ -55,10 +55,11 @@ item_protoset = ExtResource("4_jvxc1")
 [node name="CtrlInventoryStacked" type="Control" parent="."]
 layout_mode = 3
 anchors_preset = 0
-offset_left = -38.0
-offset_top = -63.0
-offset_right = 38.0
-offset_bottom = -13.0
+offset_left = -34.0
+offset_top = 10.0
+offset_right = 104.0
+offset_bottom = 106.0
+scale = Vector2(0.5, 0.5)
 script = ExtResource("4_5akbj")
 progress_bar_visible = false
 label_visible = false

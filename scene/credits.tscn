@@ -41,15 +41,21 @@ offset_bottom = 926.0
 theme = ExtResource("1_5644l")
 theme_override_colors/default_color = Color(1, 1, 1, 1)
 theme_override_font_sizes/normal_font_size = 50
-text = "I'm following Devworm's tutorial on Youtube:
+text = "I started creating this game by following Devworm's tutorial on Youtube:
 https://www.youtube.com/playlist?list=PL3cGrGHvkwn2NOT1LSwf5d2XZmlc5Bjsn
 
 
 Big thanks to Sara Garrard (sonatina.itch.io) for the music LET'S ADVENTURE!
 
 
-SceneManager:
-https://www.nightquestgames.com/changing-scenes-in-godot-4-is-easy/"
+SceneManager and AudioSystem: https://www.nightquestgames.com/
+
+
+Soundfiles mostly found on https://pixabay.com
+Credits: UNIVERSFIELD, SergeQuadrado, Der_Sternfahrer, Pixabay
+
+
+Inventory: GLoot - https://github.com/peter-kish/gloot"
 
 [node name="Label" type="Label" parent="."]
 layout_mode = 0
