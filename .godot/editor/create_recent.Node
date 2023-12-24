@@ -1,3 +1,5 @@
+CtrlInventoryStacked
+InventoryStacked
 TextureRect
 TileMap
 CollisionShape2D
@@ -6,10 +8,7 @@ Panel
 Label
 CanvasLayer
 Control
-InventoryStacked
-CtrlInventoryStacked
 Node
 Timer
 AnimatedSprite2D
 StaticBody2D
-Sprite2D

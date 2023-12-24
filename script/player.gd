@@ -93,11 +93,22 @@ func collect_health_potion():
 
 
 func collect_item(item_name: String):
+	#var newitem = InventoryItem.new()
+	#newitem.protoset = inventory_stacked.item_protoset
+	#newitem.prototype_id = item_name
+	var newitem = get_item(item_name)
+	if inventory_stacked.can_add_item(newitem):
+		inventory_stacked.add_item_automerge(newitem)
+		#var size = inventory_stacked.get_item_stack_size(newitem)
+		#print("size of %s: %s" % [item_name, str(size)])
+		pick_item.play()
+
+
+func get_item(item_name: String) -> InventoryItem:
 	var newitem = InventoryItem.new()
 	newitem.protoset = inventory_stacked.item_protoset
 	newitem.prototype_id = item_name
-	if inventory_stacked.can_add_item(newitem):
-		inventory_stacked.add_item_automerge(newitem)
+	return newitem
 
 
 func play_anim(dir):
@@ -202,6 +213,8 @@ func hurtByEnemy(area):
 
 
 func checkHealth():
+	if current_health > max_health:
+		current_health = max_health
 	if current_health < 30:
 		PlayerStats.player_hit = true
 	if current_health <= 0:
@@ -219,9 +232,9 @@ func showHit():
 	pass
 
 
-func collect(item):
+#func collect(item):
 	#inv.insert(item)
-	pick_item.play()
+	#pick_item.play()
 
 
 func hungry():
@@ -255,12 +268,27 @@ func _on_thirst_timer_timeout():
 
 
 func drink():
-	#inventory.remove_water()
-	#inv_instance.remove_water()
-	pass
+	if remove_item("water_potion"):
+		current_thirst += 10
+		thirstChanged.emit()
 
 
 func eat():
-	if ctrl_inventory_stacked.has_item("apple"):
-		print("Apple")
-		
+	#var apple = get_item("apple")
+	#var size = inventory_stacked.get_item_by_id("apple").get_property("stack_size")
+	#if size >= 1:
+	#	inventory_stacked.set_item_stack_size(inventory_stacked.get_item_by_id("apple"), size - inventory_stacked.get_prototype_stack_size("apple"))
+	if remove_item("apple"):
+		current_health += 20
+		checkHealth()
+		healthChanged.emit()
+
+
+
+func remove_item(item_name: String) -> bool:
+	var size = inventory_stacked.get_item_by_id(item_name).get_property("stack_size")
+	if size >= 1:
+		inventory_stacked.set_item_stack_size(inventory_stacked.get_item_by_id(item_name), size - inventory_stacked.get_prototype_stack_size(item_name))
+		return true
+	else:
+		return false

@@ -9,7 +9,7 @@ var is_dead = false
 var player = null
 
 @onready var slime = $slime_collectable
-@export var itemRes = InvItem
+#@export var itemRes = InvItem
 @onready var healthBar = $healthBar
 @onready var hit_sound = $HitSound
 @onready var dead_sound = $DeadSound

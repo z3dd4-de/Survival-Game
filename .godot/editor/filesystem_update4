@@ -35,3 +35,5 @@ res://scene/apple_collectable.tscn
 res://scene/apple_tree.tscn
 res://script/apple_tree.gd
 res://script/slime.gd
+res://script/chest.gd
+res://script/test_map.gd

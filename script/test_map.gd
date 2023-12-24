@@ -19,6 +19,10 @@ var count_slimes = 0
 var max_apple_trees = 2
 var max_slimes = 3
 
+@onready var chest = $Chest
+@onready var inventory_chest = chest.ctrl_inventory_stacked
+@onready var inventory_player = $Player.ctrl_inventory_stacked
+
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	tilemap = get_node("TileMap")
@@ -31,6 +35,9 @@ func _ready():
 			var tmp = Vector2i(i, j) 
 			if !used_by_trees.has(tmp) and !used_by_water.has(tmp):
 				free_cells.append(tmp)
+	
+	# init chest
+	chest.inventory_stacked.create_and_add_item("health_potion")
 	
 	$Timer.start()
 

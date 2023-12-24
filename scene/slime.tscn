@@ -1,8 +1,7 @@
-[gd_scene load_steps=33 format=3 uid="uid://badrenyf6lxhy"]
+[gd_scene load_steps=32 format=3 uid="uid://badrenyf6lxhy"]
 
 [ext_resource type="Script" path="res://script/slime.gd" id="1_1ciuu"]
 [ext_resource type="Texture2D" uid="uid://cgiw1gkpcta4w" path="res://art/character/survivalgame-enemy-slime.png" id="2_jja2w"]
-[ext_resource type="Resource" uid="uid://htu51isqkiyb" path="res://inventory/items/slime.tres" id="2_qwb5u"]
 [ext_resource type="PackedScene" uid="uid://n8b0xn8pvth7" path="res://scene/slime_collectable.tscn" id="4_ist1c"]
 [ext_resource type="Texture2D" uid="uid://4xccsrmfqsqn" path="res://art/character/healthbarUnder.png" id="5_roxur"]
 [ext_resource type="Texture2D" uid="uid://cgxtl0ubcip7p" path="res://art/character/healthbarProgress.png" id="6_234m7"]
@@ -170,7 +169,6 @@ radius = 14.0
 z_index = 14
 y_sort_enabled = true
 script = ExtResource("1_1ciuu")
-itemRes = ExtResource("2_qwb5u")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 y_sort_enabled = true
