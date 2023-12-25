@@ -16,7 +16,9 @@ var smoke_is_happening = false
 
 
 func _ready():
+	# init chest
 	PlayerStats.inventory = $Chest/InventoryStacked
+	PlayerStats.inventory.create_and_add_item("health_potion")
 	PlayerStats.c_inventory = $Chest/CtrlInventoryStacked
 
 

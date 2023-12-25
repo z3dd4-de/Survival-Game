@@ -543,7 +543,7 @@ size = Vector2(33, 14)
 radius = 9.0
 height = 24.0
 
-[node name="Skeleton" type="CharacterBody2D"]
+[node name="Skeleton" type="CharacterBody2D" groups=["enemy"]]
 script = ExtResource("1_fhb2i")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]

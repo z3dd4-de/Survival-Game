@@ -37,3 +37,5 @@ res://script/global/player_stats.gd
 res://script/chest.gd
 res://script/world.gd
 res://script/world_2.gd
+res://script/MessageLayer.gd
+res://script/slime.gd

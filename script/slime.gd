@@ -29,6 +29,8 @@ func _physics_process(_delta):
 		$detection_area/CollisionShape2D.disabled = false
 		if player != null:
 			position += (player.position - position) / SPEED
+			#velocity = dir * SPEED
+			move_and_slide()
 			$AnimatedSprite2D.play("move")
 		else:
 			$AnimatedSprite2D.play("idle")
@@ -100,7 +102,7 @@ func _on_area_2d_body_entered(body):
 
 func _on_area_2d_body_exited(body):
 	if body.has_method("player"):
-		print("Player: null")
+		#print("Player: null")
 		player = null
 
 

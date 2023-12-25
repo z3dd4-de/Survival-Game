@@ -21,8 +21,9 @@ signal WaterCollected
 signal HealthPotionCollected
 signal SlimeCollected
 
-#bugfix: not every apple tree needs its own tutorial message
+#bugfix: not every apple tree/stick needs its own tutorial message
 var tutorial_message_3_shown = false
+var tutorial_message_4_shown = false
 var tutorial_message_inv_shown = false
 
 #inventories
@@ -80,10 +81,14 @@ func check_item_selected(inv: CtrlInventoryStacked):
 	if inv == PlayerStats.c_inventory:
 		var item: InventoryItem = PlayerStats.c_inventory.get_selected_inventory_item()
 		if item == null:
+			print("Inv null")
 			return
 		PlayerStats.inventory.transfer_autosplitmerge(item, PlayerStats.player_inventory)
+		print("Inv not null")
 	else:
 		var item: InventoryItem = PlayerStats.cp_inventory.get_selected_inventory_item()
 		if item == null:
+			print("P-Inv null")
 			return
 		PlayerStats.player_inventory.transfer_autosplitmerge(item, PlayerStats.inventory)
+		print("P-Inv not null")

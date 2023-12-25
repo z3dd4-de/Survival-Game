@@ -875,7 +875,7 @@ player = NodePath("../../Player")
 offset_left = 716.0
 offset_top = 299.0
 offset_right = 1331.0
-offset_bottom = 633.0
+offset_bottom = 746.0
 size_flags_horizontal = 4
 size_flags_vertical = 4
 

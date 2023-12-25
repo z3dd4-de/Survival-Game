@@ -1,6 +1,5 @@
 class_name Message extends CanvasLayer
 
-#@onready var shopmenu = get_node("../shopmenu")
 @onready var messageText = $MarginContainer/messageText
 
 func _ready():

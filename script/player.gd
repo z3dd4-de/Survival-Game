@@ -255,6 +255,7 @@ func eat():
 		current_hunger += 10
 		checkHealth()
 		healthChanged.emit()
+		hungerChanged.emit()
 
 
 func remove_item(item_name: String) -> bool:
