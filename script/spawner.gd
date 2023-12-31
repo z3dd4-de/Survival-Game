@@ -71,6 +71,7 @@ func add_slime_to_world():
 	#print("Slime - randvalue: %s" % rand_value)
 	slime = SlimeSpawner.instantiate()
 	slime.position = tilemap.map_to_local(rand_value)
+	slime.wander_range = randi_range(50, 150)
 	world.add_child(slime)
 	#print("Slime: %s" % tilemap.map_to_local(rand_value))
 

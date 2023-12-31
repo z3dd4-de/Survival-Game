@@ -3,7 +3,8 @@ extends CharacterBody2D
 var health = 300
 var current_health = health
 @onready var healthBar = $healthBar
-const SPEED = 30.0
+@onready var wander_controller = $WanderController
+const SPEED = 50.0
 
 var dir = Vector2.RIGHT
 var start_position: Vector2
@@ -24,7 +25,7 @@ func _ready():
 
 
 func get_state():
-	var r = randi_range(0, 3)
+	var r = randi_range(0, 2)
 	match r:
 		0:
 			current_state = IDLE
@@ -32,12 +33,12 @@ func get_state():
 			current_state = REACT
 		2:
 			current_state = WALK
-		3:
-			current_state = NEW_DIR
+		#3:
+		#	current_state = NEW_DIR
 
 
 func _process(delta):
-	if player != null:
+	if player != null and player.is_alive:
 		var oldpos = position
 		position += (player.position - position) / SPEED
 		current_state = ATTACK
@@ -54,29 +55,31 @@ func _process(delta):
 			IDLE:
 				$AnimatedSprite2D.play("idle")
 			WALK:
-				if dir.x == -1: # left
-					$AnimatedSprite2D.flip_h = true
-				else:
-					$AnimatedSprite2D.flip_h = false
+				#if dir.x == -1: # left
+				#	$AnimatedSprite2D.flip_h = true
+				#else:
+				#	$AnimatedSprite2D.flip_h = false
 				$AnimatedSprite2D.play("walk")
 				if player == null:
-					var dist = position - start_position
-					if dist.x > 100:
-						position += (start_position - position) / SPEED
-					else:
-						position += dir * SPEED * delta
+					var direction = global_position.direction_to(wander_controller.target_position)
+					velocity = velocity.move_toward(direction * SPEED, delta)
+					$AnimatedSprite2D.flip_h = velocity.x < 0
+					#var dist = position - start_position
+					#if dist.x > 100:
+					#	position += (start_position - position) / SPEED
+					#else:
+					#	position += dir * SPEED * delta
+					move_and_slide()
 			REACT:
 				$AnimatedSprite2D.play("react")
 			DIE:
 				$AnimatedSprite2D.play("dead")
 			HIT:
 				$AnimatedSprite2D.play("hit")
-			NEW_DIR:
+			NEW_DIR:	#not used any longer
 				dir = Helpers.choose([Vector2.RIGHT, Vector2.UP, Vector2.DOWN, Vector2.LEFT])
 				$AnimatedSprite2D.play("walk")
 				current_state = WALK
-	
-	move_and_slide()
 
 
 func _on_detection_area_body_entered(body):
@@ -122,12 +125,13 @@ func death():
 func _on_hit_box_area_entered(area):
 	var damage
 	if area.has_method("arrow_deal_damage"):
-		damage = 100 * PlayerStats.shooting / 10
+		damage = 100 * PlayerStats.shooting / PlayerStats.max_shooting_level
 		take_damage(damage)
 
 
 func _on_timer_timeout():
 	$Timer.wait_time = Helpers.choose([0.5, 1.0, 1.5])
+	wander_controller.start_wander_timer($Timer.wait_time)
 	if !is_dead:
 		get_state()
 		$Timer.start()

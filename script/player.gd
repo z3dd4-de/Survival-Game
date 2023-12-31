@@ -163,7 +163,7 @@ func handleInput():
 		bow_cooldown = false
 		var arrow_instance = arrow.instantiate()
 		arrow_instance.rotation = $Marker2D.rotation
-		arrow_instance.global_position = $Marker2D.global_position + Vector2(randi_range(0,15-PlayerStats.shooting),randi_range(0,15-PlayerStats.shooting))
+		arrow_instance.global_position = $Marker2D.global_position + Vector2(randi_range(0,(PlayerStats.max_shooting_level+2)-PlayerStats.shooting),randi_range(0,(PlayerStats.max_shooting_level+2)-PlayerStats.shooting))
 		add_child(arrow_instance)
 		await get_tree().create_timer(0.4).timeout
 		bow_cooldown = true

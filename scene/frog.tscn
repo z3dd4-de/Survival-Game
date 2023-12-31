@@ -1,7 +1,8 @@
-[gd_scene load_steps=16 format=3 uid="uid://ckjo8h1hayvsi"]
+[gd_scene load_steps=17 format=3 uid="uid://ckjo8h1hayvsi"]
 
 [ext_resource type="Texture2D" uid="uid://d3drk0xqtatqy" path="res://art/character/2d_animation_frog_spritesheet.png" id="1_3ei4f"]
 [ext_resource type="Script" path="res://script/frog.gd" id="1_rys44"]
+[ext_resource type="PackedScene" uid="uid://cfrrtbt38ggp2" path="res://scene/wander_controller.tscn" id="3_gvdlc"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_bsdmr"]
 atlas = ExtResource("1_3ei4f")
@@ -105,7 +106,7 @@ animations = [{
 "speed": 5.0
 }]
 
-[node name="Frog" type="StaticBody2D"]
+[node name="Frog" type="CharacterBody2D"]
 script = ExtResource("1_rys44")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
@@ -117,5 +118,7 @@ frame_progress = 0.813116
 
 [node name="Timer" type="Timer" parent="."]
 autostart = true
+
+[node name="WanderController" parent="." instance=ExtResource("3_gvdlc")]
 
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

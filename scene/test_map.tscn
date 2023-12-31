@@ -11,7 +11,7 @@
 [ext_resource type="Texture2D" uid="uid://4b6jalj4vw4j" path="res://art/environment/survivalgame-terrian-water_transparent.png" id="6_734ua"]
 [ext_resource type="PackedScene" uid="uid://dw5wtj55dpfxg" path="res://scene/skeleton.tscn" id="7_v4b1b"]
 [ext_resource type="PackedScene" uid="uid://ltwdu7bfam6u" path="res://scene/chest.tscn" id="8_3m25m"]
-[ext_resource type="PackedScene" uid="uid://ckjo8h1hayvsi" path="res://scene/frog.tscn" id="9_0ki4w"]
+[ext_resource type="PackedScene" uid="uid://ckjo8h1hayvsi" path="res://scene/frog.tscn" id="12_ftnos"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_wa1n0"]
 texture = ExtResource("5_3ewx0")
@@ -545,7 +545,7 @@ wait_time = 5.855
 position = Vector2(98, 122)
 
 [node name="Skeleton" parent="." instance=ExtResource("7_v4b1b")]
-position = Vector2(404, 314)
+position = Vector2(494, 262)
 
 [node name="collisions" type="Area2D" parent="."]
 visible = false
@@ -563,9 +563,9 @@ polygon = PackedVector2Array(480, 206, 480, 234, 461, 234, 455, 221, 455, 158, 4
 polygon = PackedVector2Array(631, -1, 642, 14, 640, 401, -2, 401, -1, 387, 2, -1, 627, 3, 644, -16, -28, -24, -35, 420, 673, 420, 667, -26)
 
 [node name="Chest" parent="." instance=ExtResource("8_3m25m")]
-position = Vector2(56, 258)
+position = Vector2(503, 175)
 
-[node name="Frog" parent="." instance=ExtResource("9_0ki4w")]
-position = Vector2(262, 201)
+[node name="Frog" parent="." instance=ExtResource("12_ftnos")]
+position = Vector2(259, 202)
 
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

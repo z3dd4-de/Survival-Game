@@ -54,7 +54,7 @@ func _process(delta):
 		$AnimatedSprite2D.play("idle")
 
 
-func move(delta):
+func move(_delta):
 	if !is_chatting:
 		#position += dir * SPEED * delta
 		velocity = dir * SPEED

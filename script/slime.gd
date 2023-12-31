@@ -1,6 +1,9 @@
 class_name Slime extends CharacterBody2D
 
-const SPEED = 50.0
+const SPEED = 80.0
+
+enum { IDLE, WANDER, ATTACKING }
+var state = IDLE
 
 var max_health = 100
 var current_health = max_health
@@ -14,28 +17,47 @@ var player = null
 @onready var hit_sound = $HitSound
 @onready var dead_sound = $DeadSound
 @onready var inv_pick = $InventoryPick
+@onready var wander_controller = $WanderController
+@onready var wander_range = wander_controller.wander_range
+
 
 func _ready():
 	healthBar.value = current_health
 	$slime_collectable/collect_area.visible = false
+	random_state()
 
+
+func random_state():
+	if wander_controller.get_time_left() == 0:
+		state = Helpers.choose([IDLE, WANDER])
+		wander_controller.start_wander_timer(Helpers.choose([1, 1.5, 2]))
 
 func _process(_delta):
 	playercollect()
 
 
-func _physics_process(_delta):
+func _physics_process(delta):
 	if !is_dead:
 		$detection_area/CollisionShape2D.disabled = false
 		if player != null:
+			state = ATTACKING
 			position += (player.position - position) / SPEED
 			#velocity = dir * SPEED
 			move_and_slide()
 			$AnimatedSprite2D.play("move")
 		else:
-			$AnimatedSprite2D.play("idle")
+			random_state()
+			match state:
+				IDLE:
+					$AnimatedSprite2D.play("idle")
+				WANDER:
+					var direction = global_position.direction_to(wander_controller.target_position)
+					velocity = velocity.move_toward(direction * SPEED, delta)
+					$AnimatedSprite2D.flip_h = velocity.x > 0
+					$AnimatedSprite2D.play("move")
 	else:	# is_dead
 		$detection_area/CollisionShape2D.disabled = true
+
 
 func _on_detection_area_body_entered(body):
 	if body.has_method("player"):
@@ -51,7 +73,7 @@ func _on_detection_area_body_exited(body):
 func _on_hitbox_area_entered(area):
 	var damage
 	if area.has_method("arrow_deal_damage"):
-		damage = 100 * PlayerStats.shooting / 10
+		damage = 100 * PlayerStats.shooting / PlayerStats.max_shooting_level
 		take_damage(damage)
 
 

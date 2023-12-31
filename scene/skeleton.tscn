@@ -1,4 +1,4 @@
-[gd_scene load_steps=87 format=3 uid="uid://dw5wtj55dpfxg"]
+[gd_scene load_steps=88 format=3 uid="uid://dw5wtj55dpfxg"]
 
 [ext_resource type="Script" path="res://script/skeleton.gd" id="1_fhb2i"]
 [ext_resource type="Texture2D" uid="uid://drbbj412huo0y" path="res://art/character/Skeleton/Skeleton Attack.png" id="1_gw2xo"]
@@ -12,6 +12,7 @@
 [ext_resource type="AudioStream" uid="uid://cl2updrw7x08w" path="res://sounds/falling-bones.mp3" id="10_jn07v"]
 [ext_resource type="AudioStream" uid="uid://bu8iglfnm72oi" path="res://sounds/scary-laugh-2.mp3" id="11_ncl57"]
 [ext_resource type="AudioStream" uid="uid://ksjac7kklidu" path="res://sounds/bone-crack.mp3" id="12_8t3v0"]
+[ext_resource type="PackedScene" uid="uid://cfrrtbt38ggp2" path="res://scene/wander_controller.tscn" id="13_bne45"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_37cjm"]
 atlas = ExtResource("1_gw2xo")
@@ -604,6 +605,9 @@ volume_db = -7.704
 [node name="CollisionShape2D" type="CollisionShape2D" parent="CollisionArea"]
 position = Vector2(0, 3)
 shape = SubResource("CapsuleShape2D_4bg01")
+
+[node name="WanderController" parent="." instance=ExtResource("13_bne45")]
+wander_range = 150
 
 [connection signal="body_entered" from="DetectionArea" to="." method="_on_detection_area_body_entered"]
 [connection signal="body_exited" from="DetectionArea" to="." method="_on_detection_area_body_exited"]

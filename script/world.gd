@@ -2,6 +2,9 @@ extends Node2D
 
 @onready var tutorial_message_1_shown = false
 
+@onready var pause_menu = $PauseMenu/CanvasLayer
+
+
 func _ready():
 	PlayerStats.player_inventory = $Player/InventoryStacked
 	PlayerStats.cp_inventory = $Player/CtrlInventoryStacked
@@ -18,7 +21,9 @@ func _process(_delta):
 
 func _input(event):
 	if event.is_action_pressed("ui_cancel"):
-		get_tree().quit()
+		#get_tree().quit()
+		pause_menu.visible = true
+		get_tree().paused = true
 	if event.is_action_pressed("help"):
 		$CanvasLayer/KeyboardLayoutPanel.visible = !$CanvasLayer/KeyboardLayoutPanel.visible
 

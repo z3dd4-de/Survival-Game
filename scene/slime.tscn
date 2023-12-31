@@ -1,4 +1,4 @@
-[gd_scene load_steps=32 format=3 uid="uid://badrenyf6lxhy"]
+[gd_scene load_steps=33 format=3 uid="uid://badrenyf6lxhy"]
 
 [ext_resource type="Script" path="res://script/slime.gd" id="1_1ciuu"]
 [ext_resource type="Texture2D" uid="uid://cgiw1gkpcta4w" path="res://art/character/survivalgame-enemy-slime.png" id="2_jja2w"]
@@ -8,6 +8,7 @@
 [ext_resource type="AudioStream" uid="uid://cbdeil2rpyk1r" path="res://sounds/slime_hit.mp3" id="7_ankkj"]
 [ext_resource type="AudioStream" uid="uid://boq4kmv40ya4d" path="res://sounds/slime_dead.mp3" id="8_4ue6c"]
 [ext_resource type="AudioStream" uid="uid://c25ja0hfql47c" path="res://sounds/inventory-grab.mp3" id="9_8vpki"]
+[ext_resource type="PackedScene" uid="uid://cfrrtbt38ggp2" path="res://scene/wander_controller.tscn" id="9_c08nb"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_ra2ed"]
 atlas = ExtResource("2_jja2w")
@@ -173,8 +174,9 @@ script = ExtResource("1_1ciuu")
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 y_sort_enabled = true
 sprite_frames = SubResource("SpriteFrames_dbxaf")
-animation = &"idle"
-frame_progress = 0.0562571
+animation = &"move"
+frame = 3
+frame_progress = 0.744574
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(1, 0)
@@ -202,9 +204,9 @@ shape = SubResource("CircleShape2D_5u4rl")
 
 [node name="healthBar" type="TextureProgressBar" parent="."]
 offset_left = -5.0
-offset_top = -15.0
+offset_top = -16.0
 offset_right = 59.0
-offset_bottom = -4.0
+offset_bottom = -5.0
 scale = Vector2(0.2, 0.3)
 texture_under = ExtResource("5_roxur")
 texture_progress = ExtResource("6_234m7")
@@ -219,6 +221,8 @@ stream = ExtResource("8_4ue6c")
 [node name="InventoryPick" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("9_8vpki")
 volume_db = -9.63
+
+[node name="WanderController" parent="." instance=ExtResource("9_c08nb")]
 
 [connection signal="area_entered" from="hitbox" to="." method="_on_hitbox_area_entered"]
 [connection signal="body_entered" from="detection_area" to="." method="_on_detection_area_body_entered"]

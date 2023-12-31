@@ -1,3 +1,10 @@
+Node2D
+Button
+RichTextLabel
+Panel
+CanvasLayer
+CharacterBody2D
+Timer
 AudioStreamPlayer
 CtrlInventoryStacked
 InventoryStacked
@@ -5,10 +12,3 @@ TextureRect
 TileMap
 CollisionShape2D
 Area2D
-Panel
-Label
-CanvasLayer
-Control
-Node
-Timer
-AnimatedSprite2D
